@@ -24,7 +24,6 @@ App (Tab Navigator)
 # Flows (newlines represent options/forks in the path)
 App
 | (HomeStack) => HomeScreen -> PendingInvitesScreen ->
-<<<<<<< HEAD
                                             MapScreen -> ChatScreen -> (?)
                                             ChatScreen -> (?)
 | (SendStack) => GroupSendScreen ->
@@ -33,11 +32,3 @@ App
 | (LogStack) => SendLogScreen -> SendInfoScreen -> ChatScreen -> (Back)
 
 * (?) means (LogStack OR Back)
-=======
-                                        MapScreen -> ChatScreen -> (LogStack)
-                                        ChatScreen -> (LogStack)
-| (SendStack) => GroupSendScreen ->
-                                MapScreen -> ChatScreen -> (LogStack)
-                                UpdateInterestScreen -> (Back)
-| (LogStack) => SendLogScreen -> SendInfoScreen -> ChatScreen -> (Back)
->>>>>>> main
