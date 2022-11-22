@@ -7,18 +7,17 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 // Local Imports
-import { HomeScreen, GroupSendScreen, SendLogScreen } from './components';
+import { HomeStack, SendStack, LogStack } from './components';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{headerShown: false}}>
-        <Tab.Screen name="HomeScreen" component={HomeScreen} />
-        <Tab.Screen name="GroupSendScreen" component={GroupSendScreen} />
-        <Tab.Screen name="SendLogScreen" component={SendLogScreen} />
+        <Tab.Screen name="HomeStack" component={HomeStack} />
+        <Tab.Screen name="SendStack" component={SendStack} />
+        <Tab.Screen name="LogStack" component={LogStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );
