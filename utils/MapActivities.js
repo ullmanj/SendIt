@@ -1,4 +1,4 @@
-[
+export default [
     {
         "name": "Dish Hike",
         "hours": "7am-7pm",

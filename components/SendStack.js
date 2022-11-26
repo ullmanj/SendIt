@@ -1,6 +1,7 @@
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
 import GroupSendScreen from './GroupSendScreen';
+import TimerScreen from './TimerScreen';
 import MapScreen from './MapScreen';
 import ChatScreen from './ChatScreen';
 import UpdateInterestScreen from './UpdateInterestScreen';
@@ -16,6 +17,7 @@ export default function SendStack() {
                 headerShown: false
             }}>
             <Stack.Screen name="GroupSendScreen" component={GroupSendScreen} />
+            <Stack.Screen name="TimerScreen" component={TimerScreen} />
             <Stack.Screen name="MapScreen" component={MapScreen} />
             <Stack.Screen name="ChatScreen" component={ChatScreen} />
             <Stack.Screen name="UpdateInterestScreen" component={UpdateInterestScreen} />
