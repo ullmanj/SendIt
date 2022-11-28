@@ -26,7 +26,7 @@ export default function MapScreen({route, navigation}) {
                     return (
                         <View>
                             <Marker
-                                key={index}
+                                key={index}  // NOTE: we may have issues using the index as the key with the screen updating properly should the array of activities change.
                                 coordinate={{latitude: activity.latitude, longitude: activity.longitude}}
                             >
                                 {/* These are the icons that appear on the map that people can vote on */}
