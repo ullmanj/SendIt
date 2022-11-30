@@ -1,11 +1,10 @@
-// Circle Icon component for when the text/title is on top of the icon (like on the Select Interests screen)
-
-import { StyleSheet, TouchableOpacity, ImageBackground, Text, Dimensions } from "react-native";
+// Circle Icon component for when the text/title is below the icon (like on the GroupSend screen)
+import { StyleSheet, View, TouchableOpacity, Image, Text, Dimensions } from "react-native";
 import React, { useState } from 'react';
 import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
 
-export default function CircleIcon(props) {
+export default function CircleIconTextBelow(props) {
     const [borderColor, setBorderColor] = useState(false)
 
     function changeBorderColor() {
@@ -17,19 +16,20 @@ export default function CircleIcon(props) {
     }
     return(
         <TouchableOpacity activeOpacity={.7} onPress={()=>{changeBorderColor()}}>
-            <ImageBackground 
-                source={props.image} 
-                resizeMode="cover" 
-                style={styles.circle}
-                imageStyle={{ 
-                    elevation: 10, // adds shadows for android
-                    borderRadius: 100, 
-                    borderColor: colors.darkgreen, 
-                    borderWidth: borderColor ? 5 : 0 
-                }}
-                >
-                <Text style={styles.title}>{props.title}</Text>
-            </ImageBackground>
+            <View style={{
+                elevation: 10, // for android
+                shadowColor: '#171717',
+                shadowOffset: { width: 0, height: 0},
+                shadowOpacity: 0.8,
+                shadowRadius: 4,}}
+            >
+                <Image 
+                    source={props.image} 
+                    resizeMode="cover" 
+                    style={{...styles.circle, borderWidth: borderColor ? 5 : 0 }}
+                />
+            </View>
+            <Text style={styles.title}>{props.title}</Text>
         </TouchableOpacity>
 
     );
@@ -56,10 +56,9 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').width * 0.25,
         alignItems: 'center',
         justifyContent: 'center',
-        shadowColor: '#171717',
-        shadowOffset: {width: 0, height: 0},
-        shadowOpacity: 0.8,
-        shadowRadius: 4,
-        marginVertical: 10
+        marginBottom: 3,
+        marginTop: 10,
+        borderRadius: 100, 
+        borderColor: colors.darkgreen, 
     } 
   });

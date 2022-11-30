@@ -3,5 +3,5 @@
 export const fonts = {
     titleFontSize: 25,
     subtitleFontSize: 22,
-    circleIconTextFontSize: 15,
+    circleIconTextFontSize: 16,
 };

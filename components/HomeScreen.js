@@ -4,7 +4,7 @@ export default function HomeScreen({navigation}) {
     return(
         <View style={styles.container}>
             <Text> Home Screen </Text>
-            <Button title="Update interests" onPress={() => navigation.navigate('SelectInterestsScreen')}/>
+            <Button title="Update interests" onPress={() => navigation.navigate('UpdateInterestsScreen')}/>
         </View>
     );
 }

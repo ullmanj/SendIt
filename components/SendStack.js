@@ -4,7 +4,7 @@ import GroupSendScreen from './GroupSendScreen';
 import TimerScreen from './TimerScreen';  // not included because it exists elswhere - navigate to it leaving this stack.
 import MapScreen from './MapScreen';  // not included because it exists elswhere - navigate to it leaving this stack.
 import ChatScreen from './ChatScreen';  // not included because it exists elswhere - navigate to it leaving this stack.
-import SelectInterestsScreen from './SelectInterestsScreen';
+import UpdateInterestsScreen from './UpdateInterestsScreen';
 
 export default function SendStack() {
     const Stack = createStackNavigator();
@@ -15,7 +15,10 @@ export default function SendStack() {
                 headerShown: false
             }}>
             <Stack.Screen name="GroupSendScreen" component={GroupSendScreen} />
-            <Stack.Screen name="SelectInterestsScreen" component={SelectInterestsScreen} />
+            <Stack.Screen name="TimerScreen" component={TimerScreen} />
+            <Stack.Screen name="MapScreen" component={MapScreen} />
+            <Stack.Screen name="ChatScreen" component={ChatScreen} />
+            <Stack.Screen name="UpdateInterestsScreen" component={UpdateInterestsScreen} />
         </Stack.Navigator>
     );
 }
