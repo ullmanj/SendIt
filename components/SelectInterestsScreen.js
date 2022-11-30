@@ -15,25 +15,25 @@ export default function SelectInterestsScreen({navigation}) {
             <Text style={styles.subtitle}>Outdoors</Text>
             <View style={styles.listOfFriends}> 
                 {OutdoorInterests.map((interest, index) => {
-                    return (<CircleIcon title={interest.name} image={interest.image} />)
+                    return (<CircleIcon title={interest.name} image={interest.image} key={index}/>)
                 })}
             </View>
             <Text style={styles.subtitle}>Indoors</Text>
             <View style={styles.listOfFriends}> 
                 {IndoorInterests.map((interest, index) => {
-                    return (<CircleIcon title={interest.name} image={interest.image} />)
+                    return (<CircleIcon title={interest.name} image={interest.image} key={index}/>)
                 })}
             </View>
             <Text style={styles.subtitle}>Entertainment</Text>
             <View style={styles.listOfFriends}> 
                 {EntertainmentInterests.map((interest, index) => {
-                    return (<CircleIcon title={interest.name} image={interest.image} />)
+                    return (<CircleIcon title={interest.name} image={interest.image} key={index}/>)
                 })}
             </View>
             <Text style={styles.subtitle}>Food</Text>
             <View style={styles.listOfFriends}> 
                 {FoodInterests.map((interest, index) => {
-                    return (<CircleIcon title={interest.name} image={interest.image} />)
+                    return (<CircleIcon title={interest.name} image={interest.image} key={index}/>)
                 })}
             </View>
             <Button title="Done" onPress={() => navigation.navigate('HomeScreen')}/>

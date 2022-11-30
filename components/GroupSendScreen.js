@@ -13,7 +13,7 @@ export default function GroupSendScreen({navigation}) {
             {/* TODO: add search bar if we have time */}
             <View style={styles.listOfFriends}> 
                 {Friends.map((friend, index) => {
-                    return (<CircleIcon title={friend.name} image={friend.profilePic} />)
+                    return (<CircleIcon title={friend.name} image={friend.profilePic} key={index}/>)
                 })}
             </View>
             <Button title="Send with these friends" onPress={() => navigation.navigate('TimerScreen')}/>
