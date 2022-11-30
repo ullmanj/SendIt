@@ -4,8 +4,9 @@ import SendLogScreen from './SendLogScreen'
 
 export { HomeScreen, GroupSendScreen, SendLogScreen }*/
 
-import HomeStack from "./HomeStack";
-import SendStack from "./SendStack";
-import LogStack from "./LogStack";
+import TabBarGroup from "./TabBarGroup";
+import TimerScreen from "./TimerScreen";
+import MapScreen from "./MapScreen";
+import ChatScreen from "./ChatScreen";
 
-export { HomeStack, SendStack, LogStack }
+export { TabBarGroup, TimerScreen, MapScreen, ChatScreen }
