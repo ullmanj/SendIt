@@ -6,7 +6,7 @@ import MapActivities from '../utils/MapActivities'
 import MapIcon from './MapIcon'
 // NOTE: just using a timer library for now because it's easier! if we have time at the end, we can go back and code our own
 // Countdown credit to: https://www.npmjs.com/package/react-native-countdown-component
-import CountDown from 'react-native-countdown-component';
+import CountDown from './CountDown.js'
 // Map credit to: https://github.com/react-native-maps/react-native-maps 
 import MapView, { Marker} from 'react-native-maps';
 
