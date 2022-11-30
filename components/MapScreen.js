@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Button, SafeAreaView} from "react-native";
 import { fonts } from "../themes/fonts";
 import { colors } from "../themes/colors";
 import React, { useState } from 'react';
@@ -12,7 +12,7 @@ import MapView, { Marker} from 'react-native-maps';
 
 export default function MapScreen({route, navigation}) {
     return(
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <MapView
                 style={styles.map}
                 initialRegion={{
@@ -24,9 +24,8 @@ export default function MapScreen({route, navigation}) {
             >
                 {MapActivities.map((activity, index) => {
                     return (
-                        <View>
+                        <View key={index}>
                             <Marker
-                                key={index}  // NOTE: we may have issues using the index as the key with the screen updating properly should the array of activities change.
                                 coordinate={{latitude: activity.latitude, longitude: activity.longitude}}
                             >
                                 {/* These are the icons that appear on the map that people can vote on */}
@@ -52,8 +51,8 @@ export default function MapScreen({route, navigation}) {
                 timeToShow={['M', 'S']}
                 timeLabels={{m: 'mins', s: 'secs'}}
             />
-            <Button title="Cancel Send" onPress={() => navigation.navigate('GroupSendScreen')}/>
-        </View>
+            <Button title="Back Out of Send" onPress={() => navigation.navigate('GroupSendScreen')}/>
+        </SafeAreaView>
     );
 }
 
