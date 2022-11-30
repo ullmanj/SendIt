@@ -15,9 +15,6 @@ export default function SendStack() {
                 headerShown: false
             }}>
             <Stack.Screen name="GroupSendScreen" component={GroupSendScreen} />
-            <Stack.Screen name="TimerScreen" component={TimerScreen} />
-            <Stack.Screen name="MapScreen" component={MapScreen} />
-            <Stack.Screen name="ChatScreen" component={ChatScreen} />
             <Stack.Screen name="UpdateInterestsScreen" component={UpdateInterestsScreen} />
         </Stack.Navigator>
     );
