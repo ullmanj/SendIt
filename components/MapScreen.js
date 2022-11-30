@@ -11,9 +11,13 @@ import CountDown from 'react-native-countdown-component';
 import MapView, { Marker} from 'react-native-maps';
 
 export default function MapScreen({route, navigation}) {
+    const [mapLoaded, setMapLoaded] = useState(false)
+
     return(
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.mapContainer}>
             <MapView
+                loadingEnabled={true}
+                loadingIndicatorColor={'colors.darkgreen'}
                 style={styles.map}
                 initialRegion={{
                     latitude: 37.428230,
@@ -21,6 +25,7 @@ export default function MapScreen({route, navigation}) {
                     latitudeDelta: 0.0422,
                     longitudeDelta: 0.0421,
                   }}
+                onMapReady={() => { setMapLoaded(true) }}
             >
                 {MapActivities.map((activity, index) => {
                     return (
@@ -38,30 +43,42 @@ export default function MapScreen({route, navigation}) {
                     )
                 })}
             </MapView>
-            <Text style={styles.title}> Step 3: Vote! </Text>
-            <Text style={styles.subtitle}> You and all of the friends you selected have until the timer expires to select a send! </Text>
-            <Text style={{backgroundColor: 'white'}}> Vote on a send by clicking on the one that appeals to you the most. </Text>
-            <CountDown
-                until={route.params.minutes * 60} // this is how long (in seconds) the timer will be set for
-                // until={20} // uncomment this line (and comment the line before) if you want the timer to go quickly when you are testing/coding
-                size={30}
-                onFinish={() => alert('Finished')} // TODO we will need to update this to take the user to the next page depending on what was voted on the most
-                digitStyle={{backgroundColor: colors.lightpink}}
-                digitTxtStyle={{color: colors.darkpink}}
-                timeToShow={['M', 'S']}
-                timeLabels={{m: 'mins', s: 'secs'}}
-            />
-            <Button title="Back Out of Send" onPress={() => navigation.navigate('GroupSendScreen')}/>
+            
+            { mapLoaded === true &&
+            <View style={styles.overlay}>
+                <Text style={styles.title}> Step 3: Vote! </Text>
+                <Text style={styles.subtitle}> You and all of the friends you selected have until the timer expires to select a send! </Text>
+                <Text style={{backgroundColor: 'white'}}> Vote on a send by clicking on the one that appeals to you the most. </Text>
+                <CountDown
+                    until={route.params.minutes * 60} // this is how long (in seconds) the timer will be set for
+                    // until={20} // uncomment this line (and comment the line before) if you want the timer to go quickly when you are testing/coding
+                    size={30}
+                    onFinish={() => alert('Finished')} // TODO we will need to update this to take the user to the next page depending on what was voted on the most
+                    digitStyle={{backgroundColor: colors.lightpink}}
+                    digitTxtStyle={{color: colors.darkpink}}
+                    timeToShow={['M', 'S']}
+                    timeLabels={{m: 'mins', s: 'secs'}}
+                />
+                <Button title="Back Out of Send" onPress={() => navigation.navigate('GroupSendScreen')}/>
+            </View>
+            }
         </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
+    mapContainer: {
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
+      zIndex: 0,
+    },
+    overlay: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 1,
     },
     title: {
         fontSize: fonts.titleFontSize,
