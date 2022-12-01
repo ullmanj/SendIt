@@ -9,6 +9,7 @@ import MapIcon from './MapIcon'
 import CountDown from './CountDown.js'
 // Map credit to: https://github.com/react-native-maps/react-native-maps 
 import MapView, { Marker} from 'react-native-maps';
+import MapActivityPreview from "./MapActivityPreview";
 
 export default function MapScreen({route, navigation}) {
     const [mapLoaded, setMapLoaded] = useState(false)
@@ -46,7 +47,7 @@ export default function MapScreen({route, navigation}) {
             
             { mapLoaded === true &&
             <View style={styles.overlay}>
-                <Text style={styles.title}> Step 3: Vote! </Text>
+                {/* <Text style={styles.title}> Step 3: Vote! </Text>
                 <Text style={styles.subtitle}> You and all of the friends you selected have until the timer expires to select a send! </Text>
                 <Text style={{backgroundColor: 'white'}}> Vote on a send by clicking on the one that appeals to you the most. </Text>
                 <CountDown
@@ -59,7 +60,8 @@ export default function MapScreen({route, navigation}) {
                     timeToShow={['M', 'S']}
                     timeLabels={{m: 'mins', s: 'secs'}}
                 />
-                <Button title="Back Out of Send" onPress={() => navigation.navigate('GroupSendScreen')}/>
+                <Button title="Back Out of Send" onPress={() => navigation.navigate('GroupSendScreen')}/> */}
+                <MapActivityPreview activity={MapActivities[0]}/>
             </View>
             }
         </SafeAreaView>
