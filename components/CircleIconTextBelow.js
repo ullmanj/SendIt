@@ -15,7 +15,10 @@ export default function CircleIconTextBelow(props) {
         }
     }
     return(
-        <TouchableOpacity activeOpacity={.7} onPress={()=>{changeBorderColor()}}>
+        <TouchableOpacity activeOpacity={.7} onPress={()=>{
+            changeBorderColor();
+            props.pressHandler && props.pressHandler();
+            }}>
             <View style={{
                 elevation: 10, // for android
                 shadowColor: '#171717',

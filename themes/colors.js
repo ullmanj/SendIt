@@ -6,5 +6,6 @@ export const colors = {
     lightpink: '#F1A3D3',
     darkpink: '#E051A9',
     white: '#FFFFFF',
+    lightgray: '#ebebeb', // chosen at random for deactivated button. May want to adjust.
 };
   
