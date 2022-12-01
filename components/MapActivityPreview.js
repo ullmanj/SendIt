@@ -6,33 +6,27 @@ import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
 import { constants } from "../themes/constants";
 import GreenButton from "./GreenButton";
+import { useNavigation } from "@react-navigation/native";
 
 export default function MapActivityPreview({ activity }) {
     console.log(activity);
     return(
         <View style={styles.body}>
-            <SendInfo activity={activity}/>
-            {/* <GreenButton/> */}
+            <Image source={activity.image} style={styles.image}/>
+            <Details activity={activity}/>
         </View>
     );
 }
 
 function Details({ activity }) {
+    const navigation = useNavigation()
     return(
-        <View styles={styles.detailsChunk}>
-            {/* <Text> {activity.hours}</Text> */}
-            {/* <Text> {activity.name} </Text> */}
-            {/* <Text> {activity.activityDurationHours} </Text> */}
-            {/* <Text> {activity.price} </Text>   */}
-        </View>
-    );
-}
-
-function SendInfo({ activity }) {
-    return(
-        <View style={styles.sendInfo}>
-            <Image source={activity.image} style={styles.image}/>
-            <Details activity={activity}/>
+        <View>
+            <Text> {activity.hours}</Text>
+            <Text> {activity.name} </Text>
+            <Text> {activity.activityDurationHours} </Text>
+            <Text> {activity.price} </Text> 
+            <GreenButton navigation={navigation} title={"Vote"} nextScreen={""}/>
         </View>
     );
 }
@@ -64,19 +58,10 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').width * 0.30,
         backgroundColor: colors.white,
         borderRadius: constants.borderRadius,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignContent: 'center',
-        padding: 10
-    },
-    sendInfo: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignContent: 'center',
-        flex: 1,
-    },
-    detailsChunk: {
-
+        padding: 10
     },
     image: {
         width: undefined,

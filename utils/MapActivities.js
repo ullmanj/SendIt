@@ -1,10 +1,9 @@
 export default [
     // TODO add more activites
-    // TODO sushi making and stanford movie theater are too close together on the map so change one of them to something further away
     {
         'name': 'Dish Hike',
         'emoji': '🥾',
-        'hours': '7am-7pm',
+        'hours': '7AM-7PM',
         'latitude': '37.408564',
         'longitude': '-122.179599',
         'image': require('../utils/mapActivityPics/hiking.png'),
@@ -14,7 +13,7 @@ export default [
     {
         'name': 'Stanford Movie Theater',
         'emoji': '🍿',
-        'hours': '10am-10pm',
+        'hours': '10AM-10PM',
         'latitude': '37.442404193562126',
         'longitude': '-122.1776337156425',
         'image': require('../utils/mapActivityPics/movieTheater.png'),
@@ -24,7 +23,7 @@ export default [
     {
         'name': 'Fountain Hopping',
         'emoji': '🤿',
-        'hours': '10am-10pm',
+        'hours': '10AM-10PM',
         'latitude': '37.424320',
         'longitude': '-122.167010',
         'image': require('../utils/mapActivityPics/fountainHopping.png'),
@@ -34,7 +33,7 @@ export default [
     {
         'name': 'Sushi Making Class',
         'emoji': '🍱',
-        'hours': '10am-10pm',
+        'hours': '10AM-10PM',
         'latitude': '37.415100',
         'longitude': '-122.155362',
         'image': require('../utils/mapActivityPics/bakingClass.png'),

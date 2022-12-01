@@ -39,7 +39,9 @@ export default function UpdateInterestsScreen({navigation}) {
                 renderSectionHeader={renderSectionHeader}
                 renderItem={renderSection}
             /> 
-            <GreenButton navigation={navigation} title="Done" nextScreen="HomeScreen" />
+            <View style={styles.doneButton}>
+              <GreenButton navigation={navigation} title="Done" nextScreen="TabBarGroup" />
+            </View>
         </View>
 
     )
@@ -65,5 +67,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFF',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    doneButton: {
+      paddingTop: 5,
+      paddingBottom: 10,
     },
   });

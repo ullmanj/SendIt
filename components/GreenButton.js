@@ -15,15 +15,18 @@ export default function GreenButton({ navigation, title, nextScreen }) {
 }
 
 const styles = StyleSheet.create({
+    button: {
+        
+    },
     clickablePart: {
         elevation: 8,
         backgroundColor: colors.lightgreen,
         borderRadius: 30,
         marginVertical: 10,
-        shadowColor: '#171717',
-        shadowOffset: {width: -2, height: 4},
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
+        // shadowColor: '#171717',
+        // shadowOffset: {width: -2, height: 4},
+        // shadowOpacity: 0.2,
+        // shadowRadius: 3,
     },
     text: {
         fontSize: fonts.subtitleFontSize,

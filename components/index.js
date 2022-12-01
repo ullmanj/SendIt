@@ -8,5 +8,6 @@ import TabBarGroup from "./TabBarGroup";
 import TimerScreen from "./TimerScreen";
 import MapScreen from "./MapScreen";
 import ChatScreen from "./ChatScreen";
+import UpdateInterestsScreen from "./UpdateInterestsScreen";
 
-export { TabBarGroup, TimerScreen, MapScreen, ChatScreen }
+export { TabBarGroup, TimerScreen, MapScreen, ChatScreen, UpdateInterestsScreen }
