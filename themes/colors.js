@@ -7,5 +7,6 @@ export const colors = {
     darkpink: '#E051A9',
     white: '#FFFFFF',
     lightgray: '#ebebeb', // chosen at random for deactivated button. May want to adjust.
+    darkgray: '#928989',  // from figma for the background money sign color
 };
   

@@ -27,7 +27,7 @@ export default [
         'latitude': '37.424320',
         'longitude': '-122.167010',
         'image': require('../utils/mapActivityPics/fountainHopping.png'),
-        'price': '',
+        'price': '$',
         'activityDurationHours': '0.5'
     },
     {

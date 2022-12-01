@@ -8,6 +8,7 @@ import { constants } from "../themes/constants";
 import GreenButton from "./GreenButton";
 import SmallGreenButton from "./SmallGreenButton";
 import { useNavigation } from "@react-navigation/native";
+import MoneySigns from "./MoneySigns";
 
 export default function MapActivityPreview({ activity }) {
     return(
@@ -29,7 +30,7 @@ function Details({ activity }) {
         <View style={styles.details}>
             <View style={styles.topRow}>
                 <Text style={styles.hours}>{activity.hours}</Text>
-                <Text style={styles.price}>{activity.price}</Text>
+                <MoneySigns moneySigns={activity.price}/>
             </View>
             <Text style={styles.name} numberOfLines={2} onTextLayout={onTextLayout}>{activity.name}{numLines === 1 ? "\n" : ""}</Text>
             <View style={styles.buttonContainer}>
@@ -68,10 +69,6 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: fonts.subtitleFontSize,
-        fontWeight: 'bold',
-    },
-    price: {
-        fontSize: fonts.smallFontSize,
         fontWeight: 'bold',
     },
     topRow: {
