@@ -23,32 +23,27 @@ export default function GreenButton({ navigation, title, nextScreen, deactivated
 
 const styles = StyleSheet.create({
     button: {
-        
+        width: 100,
     },
     clickablePart: {
         // elevation: 8,
         backgroundColor: colors.lightgreen,
         borderRadius: 30,
-        marginVertical: 10,
-        // I got rid of the shadow for cleanliness & more modern design
-        // shadowColor: '#171717',
-        // shadowOffset: {width: -2, height: 4},
-        // shadowOpacity: 0.2,
-        // shadowRadius: 3,
+        // marginVertical: 10,
     },
     deactivatedClickablePart: {
         // elevation: 8,
         backgroundColor: colors.lightgray,
         borderRadius: constants.buttonBorderRadius,
-        marginVertical: 10,
+        // marginVertical: 10,
     },
     text: {
-        fontSize: fonts.subtitleFontSize,
+        fontSize: fonts.mediumFontSize,
         color: "black",
         fontWeight: "bold",
         alignSelf: "center",
-        paddingVertical: 14,
-        // width: Dimensions.get('window').width * 0.65,
-        marginHorizontal: Dimensions.get('window').width * 0.15,
+        paddingVertical: 4,
+        // width: Dimensions.get('window').width * 0.85 * .15,
+        // marginHorizontal: Dimensions.get('window').width * 0.15,
       }
   });

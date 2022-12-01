@@ -2,4 +2,5 @@
 
 export const constants = {
     borderRadius: 15,
+    buttonBorderRadius: 30,
 };
