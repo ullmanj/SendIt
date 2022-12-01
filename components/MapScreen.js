@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Button, SafeAreaView} from "react-native";
+import { StyleSheet, View, Text, Button, SafeAreaView, Alert} from "react-native";
 import { fonts } from "../themes/fonts";
 import { colors } from "../themes/colors";
 import React, { useState } from 'react';
@@ -10,9 +10,13 @@ import CountDown from './CountDown.js'
 // Map credit to: https://github.com/react-native-maps/react-native-maps 
 import MapView, { Marker} from 'react-native-maps';
 import MapActivityPreview from "./MapActivityPreview";
+import { Ionicons } from '@expo/vector-icons';
+import { TouchableOpacity } from "react-native-gesture-handler";
+import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
 export default function MapScreen({route, navigation}) {
     const [mapLoaded, setMapLoaded] = useState(false)
+    const [selectedMarkerActivityIndex, setSelectedMarkerActivityIndex] = useState()
 
     return(
         <SafeAreaView style={styles.mapContainer}>
@@ -27,11 +31,18 @@ export default function MapScreen({route, navigation}) {
                     longitudeDelta: 0.0421,
                   }}
                 onMapReady={() => { setMapLoaded(true) }}
+
+                onMarkerPress={(event) => {
+                    const index = event.nativeEvent.id;
+                    setSelectedMarkerActivityIndex(index);
+                }}
+                onPress={() => setSelectedMarkerActivityIndex(undefined)}
             >
                 {MapActivities.map((activity, index) => {
                     return (
                         <View key={index}>
                             <Marker
+                                identifier={index}
                                 coordinate={{latitude: activity.latitude, longitude: activity.longitude}}
                             >
                                 {/* These are the icons that appear on the map that people can vote on */}
@@ -45,11 +56,12 @@ export default function MapScreen({route, navigation}) {
                 })}
             </MapView>
             
-            { mapLoaded === true &&
-            <View style={styles.overlay}>
+            { mapLoaded === true &&  // pointerEvents box-none means that the touches are passed through the empty space to the map so you can still use the map with the overlay on top.
+            <View style={styles.overlay} pointerEvents={'box-none'}>
                 {/* <Text style={styles.title}> Step 3: Vote! </Text>
                 <Text style={styles.subtitle}> You and all of the friends you selected have until the timer expires to select a send! </Text>
                 <Text style={{backgroundColor: 'white'}}> Vote on a send by clicking on the one that appeals to you the most. </Text>
+                 */}
                 <CountDown
                     until={route.params.minutes * 60} // this is how long (in seconds) the timer will be set for
                     // until={20} // uncomment this line (and comment the line before) if you want the timer to go quickly when you are testing/coding
@@ -60,8 +72,22 @@ export default function MapScreen({route, navigation}) {
                     timeToShow={['M', 'S']}
                     timeLabels={{m: 'mins', s: 'secs'}}
                 />
-                <Button title="Back Out of Send" onPress={() => navigation.navigate('GroupSendScreen')}/> */}
-                <MapActivityPreview activity={MapActivities[0]}/>
+                { selectedMarkerActivityIndex !== undefined &&
+                    <MapActivityPreview activity={MapActivities[selectedMarkerActivityIndex]}/>
+                }
+                <Pressable style={styles.exit} onPress={() => {
+                    Alert.alert(
+                        'Back Out of Send',
+                        'Are you sure you want to be removed from this Send?',
+                        [
+                          {text: 'Cancel', onPress: () => {}, style: 'cancel'},
+                          {text: 'Yes', onPress: () => navigation.navigate('GroupSendScreen')},
+                        ],
+                        { cancelable: false }
+                      )
+                }}>
+                    <Ionicons name="close" size={30} color="black" />
+                </Pressable>
             </View>
             }
         </SafeAreaView>
@@ -77,9 +103,10 @@ const styles = StyleSheet.create({
       zIndex: 0,
     },
     overlay: {
-      flex: 1,
+      height: '100%',
+      width: '100%',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
       zIndex: 1,
     },
     title: {
@@ -92,5 +119,10 @@ const styles = StyleSheet.create({
     },
     map: {
         ...StyleSheet.absoluteFillObject, // TODO maybe need to change this to not absolutely fill but to fill everything below the text at top? idk how we wnat to format this
-      },
+    },
+    exit: {
+        position: 'absolute',
+        top: 0,
+        right: 20,
+    },
   });

@@ -15,8 +15,8 @@ export default [
         'name': 'Stanford Movie Theater',
         'emoji': '🍿',
         'hours': '10am-10pm',
-        'latitude': '37.445404193562126',
-        'longitude': '-122.1626337156425',
+        'latitude': '37.442404193562126',
+        'longitude': '-122.1776337156425',
         'image': require('../utils/mapActivityPics/movieTheater.png'),
         'price': '$$',
         'activityDurationHours': '2.5'
@@ -35,8 +35,8 @@ export default [
         'name': 'Sushi Making Class',
         'emoji': '🍱',
         'hours': '10am-10pm',
-        'latitude': '37.445100',
-        'longitude': '-122.160362',
+        'latitude': '37.415100',
+        'longitude': '-122.155362',
         'image': require('../utils/mapActivityPics/bakingClass.png'),
         'price': '$$$',
         'activityDurationHours': '2.5'

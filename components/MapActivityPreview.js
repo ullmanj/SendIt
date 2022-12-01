@@ -5,24 +5,45 @@ import React, { useState } from 'react';
 import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
 import { constants } from "../themes/constants";
+import GreenButton from "./GreenButton";
 
 export default function MapActivityPreview({ activity }) {
     console.log(activity);
     return(
         <View style={styles.body}>
-            <Image source={activity.image} style={styles.image}/>
-            <Info activity={activity}/>
+            <SendInfo activity={activity}/>
+            {/* <GreenButton/> */}
         </View>
     );
 }
 
-function Info({ activity }) {
+function Details({ activity }) {
     return(
-        <View styles={styles.infoChunk}>
-
+        <View styles={styles.detailsChunk}>
+            {/* <Text> {activity.hours}</Text> */}
+            {/* <Text> {activity.name} </Text> */}
+            {/* <Text> {activity.activityDurationHours} </Text> */}
+            {/* <Text> {activity.price} </Text>   */}
         </View>
     );
 }
+
+function SendInfo({ activity }) {
+    return(
+        <View style={styles.sendInfo}>
+            <Image source={activity.image} style={styles.image}/>
+            <Details activity={activity}/>
+        </View>
+    );
+}
+
+// function VoteButton() {
+//     return(
+//         <View>
+//             <Text> Vote </Text>
+//         </View>
+//     );
+// }
 
 const styles = StyleSheet.create({
     // title: {
@@ -41,15 +62,20 @@ const styles = StyleSheet.create({
     body: {
         width: Dimensions.get('window').width * 0.85,
         height: Dimensions.get('window').width * 0.30,
-        marginBottom: '15%',
         backgroundColor: colors.white,
         borderRadius: constants.borderRadius,
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignContent: 'center',
         padding: 10
     },
-    infoChunk: {
+    sendInfo: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignContent: 'center',
+        flex: 1,
+    },
+    detailsChunk: {
 
     },
     image: {

@@ -6,8 +6,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function MapIcon(props) {
     return(
-        <TouchableOpacity>
-            <Text style={{fontSize: Dimensions.get('window').width * 0.07}}>{props.emoji}</Text>
+        <TouchableOpacity style={styles.container}>
+            <Text style={{fontSize: Dimensions.get('window').width * 0.08}}>{props.emoji}</Text>
             <Text style={styles.name}>{props.name}</Text>
         </TouchableOpacity>
         // TODO make it so that when you click on component, a popup appears at the bottom with more info and that allows you to vote
@@ -15,12 +15,16 @@ export default function MapIcon(props) {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        textAlign: 'center',
+    },
     name: {
         alignItems: 'center',
         textAlign: 'center',
         justifyContent: 'center',
         fontSize: fonts.circleIconTextFontSize,
-        width: 60
+        // width: 60
     },
     image: {
         borderRadius: 100,
