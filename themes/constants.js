@@ -3,4 +3,9 @@
 export const constants = {
     borderRadius: 15,
     buttonBorderRadius: 30,
+    backButtonStyle: {
+        position: 'absolute',
+        top: 60,
+        left: 30,
+    },
 };

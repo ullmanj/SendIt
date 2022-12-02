@@ -10,7 +10,7 @@ export default [
                 'image': require("../utils/interestsPics/hiking.jpeg")
             },
             {
-                'name': 'Swimming',
+                'name': 'Swim',  // "swimming" was too long and causing wrap-around
                 'image': require("../utils/interestsPics/swimming.jpeg")
             },
             {

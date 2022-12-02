@@ -1,4 +1,5 @@
-import { StyleSheet, TouchableOpacity, Image } from "react-native";
+import { StyleSheet, Image } from "react-native";
+import { TouchableOpacity } from 'react-native-gesture-handler';  // this import fixes bugs
 
 
 export default function BackButton(props) {

@@ -1,9 +1,12 @@
 import { Dimensions } from "react-native";
 
+const TITLE_FONT_SIZE = 28;
+const SUBTITLE_FONT_SIZE = 22;
+
 export const fonts = {
     // standardizing these here bc it looks like (bassed on the figma) that every title, subtitle, and label will have these style properties in common
     title: {
-        fontSize: 28,
+        fontSize: TITLE_FONT_SIZE,
         alignSelf: 'left',
         fontWeight: '700',
         marginLeft: Dimensions.get('window').width * 0.09,
@@ -11,7 +14,7 @@ export const fonts = {
         marginBottom: Dimensions.get('window').height * 0.01,
     },
     subtitle: {
-        fontSize: 22,
+        fontSize: SUBTITLE_FONT_SIZE,
         alignSelf: 'left',
         fontWeight: 'light',
         marginHorizontal: Dimensions.get('window').width * 0.09,
@@ -32,6 +35,8 @@ export const fonts = {
         color: "black",
         fontWeight: "bold",
     },
+    titleFontSize: TITLE_FONT_SIZE,
+    subtitleFontSize: SUBTITLE_FONT_SIZE,
     mediumFontSize: 20,
     smallFontSize: 15,
     circleIconTextFontSize: 15,

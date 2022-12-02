@@ -40,28 +40,7 @@ function Details({ activity }) {
     );
 }
 
-// function VoteButton() {
-//     return(
-//         <View>
-//             <Text> Vote </Text>
-//         </View>
-//     );
-// }
-
 const styles = StyleSheet.create({
-    // title: {
-    //     alignItems: 'center',
-    //     textAlign: 'center',
-    //     justifyContent: 'center',
-    //     fontSize: fonts.circleIconTextFontSize,
-    //     color: 'black',
-    //     backgroundColor: "#FFFFFFd0",
-    //     borderRadius: 10,
-    //     overflow:'hidden',
-    //     paddingHorizontal: 5,
-    //     paddingVertical: 2,
-    //     fontWeight: 'bold'
-    // },
     hours: {
         fontWeight: 'bold',
         color: colors.darkgreen,
@@ -87,7 +66,6 @@ const styles = StyleSheet.create({
     },
     body: {
         width: Dimensions.get('window').width * 0.85,
-        // height: Dimensions.get('window').width * 0.30,
         height: undefined,
         backgroundColor: colors.white,
         borderRadius: constants.borderRadius,
@@ -99,9 +77,7 @@ const styles = StyleSheet.create({
     image: {
         flex: 1,
         height: undefined,
-        // aspectRatio: 1,
         width: undefined,
-        // width: '25%',
         resizeMode: 'cover',  // clipped instead of distorted
         borderRadius: constants.borderRadius,
     },
