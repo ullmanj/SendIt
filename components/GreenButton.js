@@ -4,15 +4,23 @@ import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
 import { constants } from "../themes/constants";
 
-export default function GreenButton({ navigation, title, nextScreen, deactivated=false, paramsToPassOn=null}) {
+export default function GreenButton({ navigation, title, nextScreen, deactivated=false, paramsToPassOn=null, deactivatedPressHandler=null, explicitNavigationFunction=null}) {
     return(    
         <View>
             <TouchableOpacity onPress={() => {
                     if(!deactivated) {
-                        if (!paramsToPassOn) {
-                            navigation.navigate(nextScreen)
+                        if (explicitNavigationFunction !== null) {
+                            explicitNavigationFunction();
                         } else {
-                            navigation.navigate(nextScreen, paramsToPassOn)
+                            if (!paramsToPassOn) {
+                                navigation.navigate(nextScreen);
+                            } else {
+                                navigation.navigate(nextScreen, paramsToPassOn);
+                            }
+                        }
+                    } else {
+                        if (deactivatedPressHandler !== null) {
+                            deactivatedPressHandler();
                         }
                     }
                 }}
