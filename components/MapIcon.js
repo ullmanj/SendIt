@@ -8,7 +8,7 @@ export default function MapIcon(props) {
     return(
         <TouchableOpacity style={styles.container}>
             <Text style={{fontSize: Dimensions.get('window').width * 0.08}}>{props.emoji}</Text>
-            <Text style={styles.name}>{props.name}</Text>
+            <Text style={fonts.iconText}>{props.name}</Text>
         </TouchableOpacity>
         // TODO make it so that when you click on component, a popup appears at the bottom with more info and that allows you to vote
     );

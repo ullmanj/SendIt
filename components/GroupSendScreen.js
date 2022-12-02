@@ -51,7 +51,7 @@ export default function GroupSendScreen({navigation}) {
                     </Text>
                 </TouchableOpacity>
                 <GreenButton navigation={navigation} title="Next" nextScreen="TimerScreen"
-                    deactivated={selectedFriendBools.indexOf(true) === -1}
+                    deactivated={selectedFriendBools.indexOf(true) === -1} paramsToPassOn={{'selectedFriendBools': selectedFriendBools}}
                     deactivatedPressHandler={() => {
                         Alert.alert(
                             'Select at least one friend to create a Send',

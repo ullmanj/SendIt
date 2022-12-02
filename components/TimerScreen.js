@@ -7,7 +7,7 @@ import GreenButton from "./GreenButton"
 import BackButton from "./BackButton"
 import { constants } from "../themes/constants";
 
-export default function TimerScreen({navigation}) {
+export default function TimerScreen({navigation, route}) {
     const [time, setTime] = useState(3);
     const MAX_TIME = 15;
     const MIN_TIME = 3;
@@ -47,7 +47,7 @@ export default function TimerScreen({navigation}) {
                 </View>
             </View>
             <View style={styles.nextButton}>
-                <GreenButton navigation={navigation} title="Next" nextScreen="MapScreen" paramsToPassOn={{'minutes': time}}/>
+                <GreenButton navigation={navigation} title="Next" nextScreen="MapScreen" paramsToPassOn={{'minutes': time, 'selectedFriendBools': route.params}}/>
             </View>    
         </SafeAreaView>
     );

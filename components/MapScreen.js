@@ -3,6 +3,7 @@ import { fonts } from "../themes/fonts";
 import { colors } from "../themes/colors";
 import React, { useState } from 'react';
 import MapActivities from '../utils/MapActivities'
+import Friends from '../utils/Friends'
 import MapIcon from './MapIcon'
 // NOTE: just using a timer library for now because it's easier! if we have time at the end, we can go back and code our own
 // Countdown credit to: https://www.npmjs.com/package/react-native-countdown-component
@@ -16,8 +17,10 @@ import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { constants } from "../themes/constants";
 import BackButtonNoAction from "./BackButtonNoAction";
 import MapVotedMenu from "./MapVotedMenu";
+import FriendLocation from "./FriendLocation";
 
-export default function MapScreen({route, navigation}) {
+export default function MapScreen({ route, navigation }) {
+    const selectedFriendBools = route.params.selectedFriendBools;
     const [mapLoaded, setMapLoaded] = useState(false);
     const [selectedMarkerActivityIndex, setSelectedMarkerActivityIndex] = useState();
     const [voted, setVoted] = useState(false);
@@ -60,6 +63,21 @@ export default function MapScreen({route, navigation}) {
                         </View>
                     )
                 })}
+
+                {Friends.map((friend, index) => {
+                    if (!selectedFriendBools.selectedFriendBools[index]) {
+                        return
+                    }
+                    return (
+                        <Marker
+                            identifier={index}
+                            coordinate={{latitude: friend.latitude, longitude: friend.longitude}}
+                        >
+                            {/* These are the friends that appear on the map */}
+                            <FriendLocation name={friend.name}/>
+                        </Marker>
+                    )}
+                )}
             </MapView>
 
             <Pressable style={constants.backButtonStyle} onPress={() => {  // Back button renders regardless of map rendering status
