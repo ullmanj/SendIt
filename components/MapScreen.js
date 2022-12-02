@@ -15,10 +15,12 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { constants } from "../themes/constants";
 import BackButtonNoAction from "./BackButtonNoAction";
+import MapVotedMenu from "./MapVotedMenu";
 
 export default function MapScreen({route, navigation}) {
-    const [mapLoaded, setMapLoaded] = useState(false)
-    const [selectedMarkerActivityIndex, setSelectedMarkerActivityIndex] = useState()
+    const [mapLoaded, setMapLoaded] = useState(false);
+    const [selectedMarkerActivityIndex, setSelectedMarkerActivityIndex] = useState();
+    const [voted, setVoted] = useState(false);
 
     return(
         <SafeAreaView style={styles.mapContainer}> 
@@ -35,8 +37,10 @@ export default function MapScreen({route, navigation}) {
                 onMapReady={() => { setMapLoaded(true) }}
 
                 onMarkerPress={(event) => {
-                    const index = event.nativeEvent.id;
-                    setSelectedMarkerActivityIndex(index);
+                    // if (!voted) {
+                        const index = event.nativeEvent.id;
+                        setSelectedMarkerActivityIndex(index);
+                    // }
                 }}
                 onPress={() => setSelectedMarkerActivityIndex(undefined)}
             >
@@ -86,8 +90,8 @@ export default function MapScreen({route, navigation}) {
                         onFinish={() => alert('Finished')} // TODO we will need to update this to take the user to the next page depending on what was voted on the most
                         digitStyle={{backgroundColor: undefined}}
                         showSeparator
-                        separatorStyle={{color: colors.darkpink}}
-                        digitTxtStyle={{color: colors.darkpink}}
+                        separatorStyle={{color: colors.darkgray}}
+                        // digitTxtStyle={{color: colors.darkgray}}  // won't do anything because I editted the coutdown file itself.
                         timeToShow={['M', 'S']}
                         timeLabels={{m: '', s: ''}}
                     />
@@ -97,8 +101,12 @@ export default function MapScreen({route, navigation}) {
                 </View>
 
                 { selectedMarkerActivityIndex !== undefined &&
-                    <MapActivityPreview activity={MapActivities[selectedMarkerActivityIndex]}/>
+                    <MapActivityPreview activity={MapActivities[selectedMarkerActivityIndex]} voteHandler={() => setVoted(true)}/>
                 }
+
+                {/* { voted &&
+                    <MapVotedMenu voteHandler={() => setVoted(false)}/>  // DO NOTHING for the demo
+                } */}
             </View>
             }
         </SafeAreaView>
@@ -124,9 +132,10 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject, // TODO maybe need to change this to not absolutely fill but to fill everything below the text at top? idk how we wnat to format this
     },
     headerBlurb: {
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffffaa',
         borderRadius: constants.borderRadius,
         paddingHorizontal: 10,
+        
         // paddingVertical: 20,
         // paddingBottom: 20,
     },

@@ -1,6 +1,7 @@
 /* This was an import in node_modules, but it had a bug, so we placed it here to ensure
 the fix was included. */
 
+import { colors } from "../themes/colors";
 /*
 --- LICENSE ---
 
@@ -198,6 +199,9 @@ class CountDown extends React.Component {
 
   renderDigit = (d) => {
     const {digitStyle, digitTxtStyle, size} = this.props;
+
+    const {days, hours, minutes, seconds} = this.getTimeLeft();  // We added this
+    const onlySeconds = days === 0 && hours === 0 && minutes === 0;  // We added this
     return (
       <View style={[
         styles.digitCont,        
@@ -208,6 +212,7 @@ class CountDown extends React.Component {
           styles.digitTxt,
           {fontSize: size},
           digitTxtStyle,
+          {color: onlySeconds ? colors.darkpink : "#000000"}  // We added this - now the timer turns pink when only seconds left.
         ]}>
           {d}
         </Text>
@@ -334,6 +339,7 @@ const styles = StyleSheet.create({
   separatorTxt: {
     backgroundColor: 'transparent',
     fontWeight: 'bold',
+    paddingBottom: 5,  // We added this as well to move the separator up slightly
   },
 });
 

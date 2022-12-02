@@ -10,16 +10,16 @@ import SmallGreenButton from "./SmallGreenButton";
 import { useNavigation } from "@react-navigation/native";
 import MoneySigns from "./MoneySigns";
 
-export default function MapActivityPreview({ activity }) {
+export default function MapActivityPreview({ activity, voteHandler }) {
     return(
         <View style={styles.body}>
             <Image source={activity.image} style={styles.image}/>
-            <Details activity={activity}/>
+            <Details activity={activity} voteHandler={voteHandler}/>
         </View>
     );
 }
 
-function Details({ activity }) {
+function Details({ activity, voteHandler }) {
     const navigation = useNavigation();
 
     const [numLines, setNumLines] = useState(1);
@@ -34,7 +34,7 @@ function Details({ activity }) {
             </View>
             <Text style={styles.name} numberOfLines={2} onTextLayout={onTextLayout}>{activity.name}{numLines === 1 ? "\n" : ""}</Text>
             <View style={styles.buttonContainer}>
-                <SmallGreenButton navigation={navigation} title={"Vote"} nextScreen={""}/>
+                <SmallGreenButton navigation={navigation} title={"Vote"} pressHandler={voteHandler}/>
             </View>
         </View>
     );
