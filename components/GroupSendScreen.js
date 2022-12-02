@@ -39,7 +39,6 @@ export default function GroupSendScreen({navigation}) {
                 numColumns={3}
                 renderItem={renderItem}
                 keyExtractor={(_, index) => index}
-                scrollEnabled={false}
             />
             <View style={styles.bottomButtons}>
                 <TouchableOpacity style={{justifyContent: 'center', alignItems: 'center'}} onPress={() => navigation.navigate('UpdateInterestsScreen', {nextScreen: "SendStack"})}>
