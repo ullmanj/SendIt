@@ -3,8 +3,12 @@ import Interests from "../utils/Interests"
 import CircleIcon from "./CircleIcon"
 import GreenButton from "./GreenButton"
 import { fonts } from "../themes/fonts"
+import React, { useState } from 'react';
   
-export default function UpdateInterestsScreen({navigation}) {
+export default function UpdateInterestsScreen({navigation, route}) {
+    // const [DestinationName, setDestinationName] = useState(route?.params?.nextScreen ? route.params.nextScreen : "HomeStack")
+    let DestinationName = route?.params?.nextScreen ? route.params.nextScreen : "HomeStack";
+
     renderSection = ({ item }) => {
       return (
         <View style={{marginBottom: 20}}> 
@@ -49,7 +53,8 @@ export default function UpdateInterestsScreen({navigation}) {
                 renderItem={renderSection}
             /> 
             <View style={styles.doneButton}>
-              <GreenButton navigation={navigation} title="Done" nextScreen="TabBarGroup" />
+              <GreenButton navigation={navigation} title="Done"
+                explicitNavigationFunction={() => navigation.navigate('TabBarGroup', { screen: {DestinationName} })}/>
             </View>
         </View>
 
