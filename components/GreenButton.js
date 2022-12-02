@@ -6,7 +6,7 @@ import { constants } from "../themes/constants";
 
 export default function GreenButton({ navigation, title, nextScreen, deactivated=false}) {
     return(    
-        <View style={styles.button}>
+        <View>
             <TouchableOpacity onPress={() => {
                     if(!deactivated) {
                         navigation.navigate(nextScreen)
@@ -22,9 +22,6 @@ export default function GreenButton({ navigation, title, nextScreen, deactivated
 }
 
 const styles = StyleSheet.create({
-    button: {
-        
-    },
     clickablePart: {
         // elevation: 8,
         backgroundColor: colors.lightgreen,

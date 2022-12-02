@@ -7,18 +7,27 @@ import { fonts } from "../themes/fonts"
 export default function UpdateInterestsScreen({navigation}) {
     renderSection = ({ item }) => {
       return (
-        <FlatList
+        <View style={{marginBottom: 20}}> 
+          <FlatList
           data={item.list}
           numColumns={3}
           renderItem={renderListItem}
           keyExtractor={keyExtractor}
           initialNumToRender={6}
         />
+        </View>
       )
     }
   
     renderSectionHeader = ({ section }) => {
-      return <Text style={styles.subtitle}>{section.title}</Text>
+      return <Text style={{
+        ...fonts.labels, 
+        // to help with visibility of section header when scrolling down
+        marginLeft: 0,
+        paddingLeft: Dimensions.get('window').width * 0.04,
+        backgroundColor: 'white',
+        width: '100%',
+      }}>{section.title}</Text>
     }
   
     renderListItem = ({ item }) => {
@@ -33,7 +42,7 @@ export default function UpdateInterestsScreen({navigation}) {
   
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Update your interests</Text>
+            <Text style={fonts.title}>Update your interests</Text>
             <SectionList
                 sections={Interests}
                 renderSectionHeader={renderSectionHeader}
@@ -48,20 +57,6 @@ export default function UpdateInterestsScreen({navigation}) {
   }
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: fonts.titleFontSize,
-        marginBottom: 10,
-        fontWeight: 'bold',
-        marginTop: Dimensions.get('window').height * 0.07,
-    },
-    subtitle: {
-        fontSize: fonts.subtitleFontSize,
-        backgroundColor: "#FFFFFFa0",
-        paddingLeft: Dimensions.get('window').width * 0.06,
-        width: Dimensions.get('window').width ,
-        backgroundColor: 'white',
-        paddingVertical: 10
-    },
     container: {
         flex: 1,
         backgroundColor: '#FFFF',

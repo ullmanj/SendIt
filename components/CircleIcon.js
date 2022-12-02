@@ -4,6 +4,7 @@ import { StyleSheet, TouchableOpacity, ImageBackground, Text, Dimensions } from 
 import React, { useState } from 'react';
 import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
+import { shapes } from '../themes/shapes'
 
 export default function CircleIcon(props) {
     const [borderColor, setBorderColor] = useState(false)
@@ -20,7 +21,7 @@ export default function CircleIcon(props) {
             <ImageBackground 
                 source={props.image} 
                 resizeMode="cover" 
-                style={styles.circle}
+                style={shapes.circle}
                 imageStyle={{ 
                     elevation: 10, // adds shadows for android
                     borderRadius: 100, 
@@ -49,17 +50,4 @@ const styles = StyleSheet.create({
         paddingVertical: 2,
         fontWeight: 'bold'
     },
-    circle: {
-        borderRadius: 100,
-        marginHorizontal: Dimensions.get('window').width * 0.041,
-        width: Dimensions.get('window').width * 0.25,
-        height: Dimensions.get('window').width * 0.25,
-        alignItems: 'center',
-        justifyContent: 'center',
-        shadowColor: '#171717',
-        shadowOffset: {width: 0, height: 0},
-        shadowOpacity: 0.8,
-        shadowRadius: 4,
-        marginVertical: 10
-    } 
   });

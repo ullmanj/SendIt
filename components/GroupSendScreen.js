@@ -14,6 +14,9 @@ export default function GroupSendScreen({navigation}) {
     }
 
     renderItem = ({ item, index }) => {
+        if (index > 5) {
+            return
+        }
         return (
             <CircleIconTextBelow title={item.name} image={item.profilePic} pressHandler={() => {
                 let newSelectedFriendBools = selectedFriendBools;
@@ -25,17 +28,17 @@ export default function GroupSendScreen({navigation}) {
 
     return(
         <View style={styles.container}>
-            <Text style={styles.title}> Step 1: Rally the Troops! </Text>
-            <Text style={styles.subtitle}> These are your available friends </Text>
-            <TouchableOpacity onPress={()=>searchName()}>
-                {/* TODO make it so that when you click on search bar, Jamie's face is selected on Group Send screen */}
-                <Image source={searchBar} style={styles.image} /> 
-            </TouchableOpacity>
+            <Text style={fonts.title}>Rally the Troops!</Text>
+            <Text style={fonts.subtitle}>Invite your available friends</Text>
+            <Text style={fonts.labels}>Search friends</Text>
+            <Image style={styles.searchBar} source={require('../utils/miscPics/searchBar.png')}/>
+            <Text style={fonts.labels}>Recents</Text>
             <FlatList
                 data={Friends}
                 numColumns={3}
                 renderItem={renderItem}
                 keyExtractor={(_, index) => index}
+                scrollEnabled={false}
             />
             {/* TODO: use a params prop to pass array of selected friends using boolean 'bitmap' to determine those */}
             <GreenButton navigation={navigation} title="Send with these friends" nextScreen="TimerScreen" deactivated={selectedFriendBools.indexOf(true) === -1}/>
@@ -45,22 +48,12 @@ export default function GroupSendScreen({navigation}) {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    title: {
-        fontSize: fonts.titleFontSize,
-        marginBottom: 10,
-        fontWeight: 'bold',
-        marginTop: Dimensions.get('window').height * 0.07,
-    },
-    subtitle: {
-        fontSize: fonts.subtitleFontSize,
-        marginBottom: 10
-    },
-    image: {
-        marginBottom: 10
+    searchBar: {
+        marginBottom: Dimensions.get('window').height * 0.035,
     }
   });
