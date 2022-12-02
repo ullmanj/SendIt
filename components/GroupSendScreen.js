@@ -38,7 +38,6 @@ export default function GroupSendScreen({navigation}) {
                 numColumns={3}
                 renderItem={renderItem}
                 keyExtractor={(_, index) => index}
-                scrollEnabled={false}
             />
             <View style={{alignSelf: 'flex-end', marginRight: Dimensions.get('window').width * 0.09, marginBottom: 0}}>
                 <GreenButton navigation={navigation} title="Next" nextScreen="TimerScreen" deactivated={selectedFriendBools.indexOf(true) === -1} paramsToPassOn={{'selectedFriendBools': selectedFriendBools}}/>
