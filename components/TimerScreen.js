@@ -1,9 +1,10 @@
-import { StyleSheet, View, Text, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, Button, Image, TouchableOpacity, Dimensions } from "react-native";
 import { fonts } from "../themes/fonts";
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { colors } from "../themes/colors";
-
+import GreenButton from "./GreenButton"
+import BackButton from "./BackButton"
 
 export default function TimerScreen({navigation}) {
     const [time, setTime] = useState(3);
@@ -22,8 +23,11 @@ export default function TimerScreen({navigation}) {
 
     return(
         <View style={styles.container}>
-            <Text style={styles.title}> Step 2: Set a timer </Text>
-            <Text style={styles.subtitle}> Your friends will have this length of time to vote on a send! You can set a timer for anywhere from 3 to 15 minutes. </Text>
+            <View style={styles.backButton}>
+                <BackButton navigation={navigation}/>
+            </View>
+            <Text style={fonts.title}>Set timer</Text>
+            <Text style={fonts.subtitle}>Your group will have this much time to vote on an activity</Text>
             <View style={styles.timer}>
                 <Text style={styles.timerText}> {time} minutes </Text>
                 <View style={styles.incrementDecrementButtons}>
@@ -35,29 +39,24 @@ export default function TimerScreen({navigation}) {
                     </TouchableOpacity>
                 </View>
             </View>
-            <View style={{flexDirection: 'row'}}>
-                <Button title="Cancel Send" onPress={() => navigation.navigate('GroupSendScreen')}/>
-                <Button title="Let's vote!" onPress={() => navigation.navigate('MapScreen', {
-                    minutes: time
-                })}/>
-            </View>
-    
+            <View style={{alignSelf: 'flex-end', marginRight: Dimensions.get('window').width * 0.09, marginBottom: 0}}>
+                <GreenButton navigation={navigation} title="Next" nextScreen="MapScreen" paramsToPassOn={{'minutes': time}}/>
+            </View>    
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    title: {
-        fontSize: fonts.titleFontSize
-    },
-    subtitle: {
-        fontSize: fonts.subtitleFontSize
+    backButton: {
+        alignSelf: 'flex-start',
+        paddingLeft: 40,
+        marginTop: -300 // something got weird with the formatting so i had to add this
     },
     timer: {
         flexDirection: 'row'

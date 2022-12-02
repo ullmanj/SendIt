@@ -8,13 +8,14 @@ import { Octicons } from '@expo/vector-icons';
 import HomeStack from './HomeStack';
 import SendStack from './SendStack';
 import LogStack from './LogStack';
+import { colors } from '../themes/colors'
 
 const Tab = createBottomTabNavigator();
 
 export default function TabBarGroup() {
   return (
+      // I know we're gonna update this tab later, but I adjusted the size to take up more of the screen to reflect the size of the tab in the figma
       <Tab.Navigator screenOptions={({ route }) => ({  // Adapted from cs47-lecture5b-demo
-          title: '',
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
@@ -26,12 +27,17 @@ export default function TabBarGroup() {
               iconName = 'clock'
             }
             // You can return any component that you like here!
-            return <Octicons name={iconName} size={size} color={color} />;
+            return <Octicons name={iconName} size={40} color={color} />;
           },
-          tabBarActiveTintColor: 'black',
+          tabBarActiveTintColor: colors.darkgreen,
           tabBarInactiveTintColor: 'gray',
           headerShown: false,
-        })} >
+          tabBarStyle: {
+            height: 100
+          },
+          tabBarShowLabel: false
+        })}
+        >
 
         <Tab.Screen name="HomeStack" component={HomeStack} />
         <Tab.Screen name="SendStack" component={SendStack} />

@@ -4,17 +4,21 @@ import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
 import { constants } from "../themes/constants";
 
-export default function GreenButton({ navigation, title, nextScreen, deactivated=false}) {
+export default function GreenButton({ navigation, title, nextScreen, deactivated=false, paramsToPassOn=null}) {
     return(    
         <View>
             <TouchableOpacity onPress={() => {
                     if(!deactivated) {
-                        navigation.navigate(nextScreen)
+                        if (!paramsToPassOn) {
+                            navigation.navigate(nextScreen)
+                        } else {
+                            navigation.navigate(nextScreen, paramsToPassOn)
+                        }
                     }
                 }}
                 style={deactivated ? styles.deactivatedClickablePart : styles.clickablePart}
             >
-                <Text style={styles.text}>{title}</Text>
+                <Text style={fonts.largeButton}>{title}</Text>
             </TouchableOpacity>
         </View>
         
@@ -39,13 +43,4 @@ const styles = StyleSheet.create({
         borderRadius: constants.buttonBorderRadius,
         marginVertical: 10,
     },
-    text: {
-        fontSize: fonts.subtitleFontSize,
-        color: "black",
-        fontWeight: "bold",
-        alignSelf: "center",
-        paddingVertical: 14,
-        // width: Dimensions.get('window').width * 0.65,
-        marginHorizontal: Dimensions.get('window').width * 0.15,
-      }
   });
