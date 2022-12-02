@@ -42,7 +42,9 @@ export default function MapScreen({ route, navigation }) {
                 onMarkerPress={(event) => {
                     // if (!voted) {
                         const index = event.nativeEvent.id;
-                        setSelectedMarkerActivityIndex(index);
+                        if (index < 100) {  // make sure you pressed an activity, not a (100's level) friend
+                            setSelectedMarkerActivityIndex(index);
+                        }
                     // }
                 }}
                 onPress={() => setSelectedMarkerActivityIndex(undefined)}
@@ -69,13 +71,15 @@ export default function MapScreen({ route, navigation }) {
                         return
                     }
                     return (
-                        <Marker
-                            identifier={index}
-                            coordinate={{latitude: friend.latitude, longitude: friend.longitude}}
-                        >
-                            {/* These are the friends that appear on the map */}
-                            <FriendLocation name={friend.name}/>
-                        </Marker>
+                        <View key={index + 100}>
+                            <Marker
+                                identifier={index + 100}
+                                coordinate={{latitude: friend.latitude, longitude: friend.longitude}}
+                            >
+                                {/* These are the friends that appear on the map */}
+                                <FriendLocation name={friend.name}/>
+                            </Marker>
+                        </View>
                     )}
                 )}
             </MapView>
