@@ -41,7 +41,7 @@ export default function GroupSendScreen({navigation}) {
                 scrollEnabled={false}
             />
             <View style={{alignSelf: 'flex-end', marginRight: Dimensions.get('window').width * 0.09, marginBottom: 0}}>
-                <GreenButton navigation={navigation} title="Next" nextScreen="TimerScreen" deactivated={selectedFriendBools.indexOf(true) === -1}/>
+                <GreenButton navigation={navigation} title="Next" nextScreen="TimerScreen" deactivated={selectedFriendBools.indexOf(true) === -1} paramsToPassOn={{'selectedFriendBools': selectedFriendBools}}/>
             </View>
             {/* TODO: use a params prop to pass array of selected friends using boolean 'bitmap' to determine those */}
         </View>

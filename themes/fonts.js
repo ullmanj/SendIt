@@ -2,6 +2,7 @@ import { Dimensions } from "react-native";
 
 const TITLE_FONT_SIZE = 28;
 const SUBTITLE_FONT_SIZE = 22;
+const CIRCLE_ICON_FONT_SIZE = 15;
 
 export const fonts = {
     // standardizing these here bc it looks like (bassed on the figma) that every title, subtitle, and label will have these style properties in common
@@ -34,6 +35,18 @@ export const fonts = {
         paddingVertical: 14,
         color: "black",
         fontWeight: "bold",
+    },
+    iconText: {
+        alignItems: 'center',
+        textAlign: 'center',
+        justifyContent: 'center',
+        fontSize: CIRCLE_ICON_FONT_SIZE,
+        color: 'black',
+        backgroundColor: "#FFFFFFaa",
+        borderRadius: 10,
+        overflow:'hidden',
+        paddingHorizontal: 5,
+        paddingVertical: 2,
     },
     titleFontSize: TITLE_FONT_SIZE,
     subtitleFontSize: SUBTITLE_FONT_SIZE,

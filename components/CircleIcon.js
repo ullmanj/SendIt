@@ -29,7 +29,7 @@ export default function CircleIcon(props) {
                     borderWidth: borderColor ? 5 : 0 
                 }}
                 >
-                <Text style={styles.title}>{props.title}</Text>
+                <Text style={{...fonts.iconText, fontWeight: 'bold'}}>{props.title}</Text>
             </ImageBackground>
         </TouchableOpacity>
 
