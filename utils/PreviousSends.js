@@ -9,7 +9,7 @@ export default [
             "Suzanne"
         ],
         "date": "10/26/22",
-        "price": "$$$$",
+        "price": "$$$",
         "photos": [
             "../utils/previousSendPics/nobu1.jpeg",
             "../utils/previousSendPics/nobu2.jpeg",
