@@ -6,7 +6,7 @@ import { constants } from "../themes/constants";
 
 export default function GreenButton({ navigation, title, pressHandler, deactivated=false}) {
     return(    
-        <View style={styles.button}>
+        <View>
             <TouchableOpacity onPress={() => {
                     if(!deactivated) {
                         pressHandler();
@@ -22,20 +22,13 @@ export default function GreenButton({ navigation, title, pressHandler, deactivat
 }
 
 const styles = StyleSheet.create({
-    button: {
-        width: 100,
-    },
     clickablePart: {
-        // elevation: 8,
         backgroundColor: colors.lightgreen,
-        borderRadius: 30,
-        // marginVertical: 10,
+        borderRadius: constants.buttonBorderRadius,
     },
     deactivatedClickablePart: {
-        // elevation: 8,
         backgroundColor: colors.lightgray,
         borderRadius: constants.buttonBorderRadius,
-        // marginVertical: 10,
     },
     text: {
         fontSize: fonts.mediumFontSize,
@@ -43,6 +36,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         alignSelf: "center",
         paddingVertical: 4,
+        paddingHorizontal: 25,
         // width: Dimensions.get('window').width * 0.85 * .15,
         // marginHorizontal: Dimensions.get('window').width * 0.15,
       }

@@ -10,22 +10,25 @@ import SmallGreenButton from "./SmallGreenButton";
 import { useNavigation } from "@react-navigation/native";
 import MoneySigns from "./MoneySigns";
 
-export default function MapActivityPreview({ activity, voteHandler }) {
+export default function MapActivityPreview({ activity, voteHandler, voteIsCast, isVotedFor }) {
     return(
         <View style={styles.body}>
             <Image source={activity.image} style={styles.image}/>
-            <Details activity={activity} voteHandler={voteHandler}/>
+            <Details activity={activity} voteHandler={voteHandler} voteIsCast={voteIsCast} isVotedFor={isVotedFor} />
         </View>
     );
 }
 
-function Details({ activity, voteHandler }) {
+function Details({ activity, voteHandler, voteIsCast, isVotedFor  }) {
     const navigation = useNavigation();
 
     const [numLines, setNumLines] = useState(1);
     const onTextLayout = useCallback(e => {
         setNumLines(e.nativeEvent.lines.length);
     });
+
+    const buttonText = voteIsCast ? (isVotedFor ? "Voted" : "Switch Vote") : "Vote";
+
     return(
         <View style={styles.details}>
             <View style={styles.topRow}>
@@ -34,7 +37,7 @@ function Details({ activity, voteHandler }) {
             </View>
             <Text style={styles.name} numberOfLines={2} onTextLayout={onTextLayout}>{activity.name}{numLines === 1 ? "\n" : ""}</Text>
             <View style={styles.buttonContainer}>
-                <SmallGreenButton navigation={navigation} title={"Vote"} pressHandler={voteHandler}/>
+                <SmallGreenButton navigation={navigation} title={buttonText} pressHandler={voteHandler} deactivated={isVotedFor}/>
             </View>
         </View>
     );

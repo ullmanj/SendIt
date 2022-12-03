@@ -8,9 +8,9 @@ import BackButton from "./BackButton"
 import { constants } from "../themes/constants";
 
 export default function TimerScreen({navigation, route}) {
-    const [time, setTime] = useState(3);
     const MAX_TIME = 15;
-    const MIN_TIME = 3;
+    const MIN_TIME = 1;
+    const [time, setTime] = useState(MIN_TIME);
 
     function incrementTime() {
         if (time < MAX_TIME) {

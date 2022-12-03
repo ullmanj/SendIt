@@ -35,11 +35,11 @@ export default function GreenButton({ navigation, title, nextScreen, deactivated
 
 const styles = StyleSheet.create({
     clickablePart: {
-        // elevation: 8,
         backgroundColor: colors.lightgreen,
-        borderRadius: 30,
+        borderRadius: constants.buttonBorderRadius,
         marginVertical: 10,
         // I got rid of the shadow for cleanliness & more modern design
+        // elevation: 8,
         // shadowColor: '#171717',
         // shadowOffset: {width: -2, height: 4},
         // shadowOpacity: 0.2,

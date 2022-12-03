@@ -16,14 +16,15 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { constants } from "../themes/constants";
 import BackButtonNoAction from "./BackButtonNoAction";
-import MapVotedMenu from "./MapVotedMenu";
+// import MapVotedMenu from "./MapVotedMenu";
+import DefaultMapPreview from "./DefaultMapPreview";
 import FriendLocation from "./FriendLocation";
 
 export default function MapScreen({ route, navigation }) {
     const selectedFriendBools = route.params.selectedFriendBools;
     const [mapLoaded, setMapLoaded] = useState(false);
     const [selectedMarkerActivityIndex, setSelectedMarkerActivityIndex] = useState();
-    const [voted, setVoted] = useState(false);
+    const [voteIndex, setVoteIndex] = useState(-1);
 
     return(
         <SafeAreaView style={styles.mapContainer}> 
@@ -40,12 +41,10 @@ export default function MapScreen({ route, navigation }) {
                 onMapReady={() => { setMapLoaded(true) }}
 
                 onMarkerPress={(event) => {
-                    // if (!voted) {
-                        const index = event.nativeEvent.id;
-                        if (index < 100) {  // make sure you pressed an activity, not a (100's level) friend
-                            setSelectedMarkerActivityIndex(index);
-                        }
-                    // }
+                    const index = event.nativeEvent.id;
+                    if (index < 100) {  // make sure you pressed an activity, not a (100's level) friend
+                        setSelectedMarkerActivityIndex(index);
+                    }
                 }}
                 onPress={() => setSelectedMarkerActivityIndex(undefined)}
             >
@@ -101,10 +100,6 @@ export default function MapScreen({ route, navigation }) {
             { mapLoaded === true &&  // pointerEvents box-none means that the touches are passed through the empty space to the map so you can still use the map with the overlay on top.
             <View style={styles.overlay} pointerEvents={'box-none'}>
                 <View style={styles.headerBlurb}>
-                    {/* <Text style={styles.title}> Step 3: Vote! </Text>
-                    <Text style={styles.subtitle}> You and all of the friends you selected have until the timer expires to select a send! </Text>
-                    <Text style={{backgroundColor: 'white'}}> Vote on a send by clicking on the one that appeals to you the most. </Text>
-                    */}
                     <CountDown
                         until={route.params.minutes * 60} // this is how long (in seconds) the timer will be set for
                         // until={20} // uncomment this line (and comment the line before) if you want the timer to go quickly when you are testing/coding
@@ -117,18 +112,17 @@ export default function MapScreen({ route, navigation }) {
                         timeToShow={['M', 'S']}
                         timeLabels={{m: '', s: ''}}
                     />
-                    {/* <Text>
-                        left to vote on this send
-                    </Text> */}
                 </View>
-
-                { selectedMarkerActivityIndex !== undefined &&
-                    <MapActivityPreview activity={MapActivities[selectedMarkerActivityIndex]} voteHandler={() => setVoted(true)}/>
+                
+                { selectedMarkerActivityIndex === undefined &&
+                    <DefaultMapPreview voteIsCast={voteIndex !== -1}/>
                 }
-
-                {/* { voted &&
-                    <MapVotedMenu voteHandler={() => setVoted(false)}/>  // DO NOTHING for the demo
-                } */}
+                { selectedMarkerActivityIndex !== undefined &&
+                    <MapActivityPreview activity={MapActivities[selectedMarkerActivityIndex]}
+                        voteHandler={() => setVoteIndex(selectedMarkerActivityIndex)}
+                        voteIsCast={voteIndex !== -1}
+                        isVotedFor={selectedMarkerActivityIndex === voteIndex}/>
+                }
             </View>
             }
         </SafeAreaView>
@@ -154,7 +148,7 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject, // TODO maybe need to change this to not absolutely fill but to fill everything below the text at top? idk how we wnat to format this
     },
     headerBlurb: {
-        backgroundColor: '#ffffffaa',
+        backgroundColor: '#ffffffcc',
         borderRadius: constants.borderRadius,
         paddingHorizontal: 10,
         
