@@ -1,12 +1,15 @@
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, SafeAreaView, View, Text, Button } from "react-native";
 import { fonts } from "../themes/fonts";
+import PendingInvites from "../utils/PendingInvites";
+import PendingInvite from "./PendingInvite";
 
 export default function HomeScreen({navigation}) {
     return(
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={fonts.title}>Pending Invites</Text>
+            <PendingInvite/>
             <Text style={fonts.title}>Your Status</Text>
-        </View>
+        </SafeAreaView>
     );
 }
 
