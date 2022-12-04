@@ -11,14 +11,21 @@ export default function TimerScreen({navigation, route}) {
     const MAX_TIME = 15;
     const MIN_TIME = 1;
     const [time, setTime] = useState(MIN_TIME);
+    const [timerText, setTimerText] = useState('minute')
 
     function incrementTime() {
+        setTimerText('minutes')
         if (time < MAX_TIME) {
             setTime(time + 1)
-        } // TODO add some sort of error message when they try to set a time greater than 15
+        }
     }
 
     function decrementTime() {
+        if (time > 2) {
+            setTimerText('minutes')
+        } else {
+            setTimerText('minute')
+        }
         if (time > MIN_TIME) {
             setTime(time - 1)
         }
@@ -35,7 +42,7 @@ export default function TimerScreen({navigation, route}) {
             </View>
             <View style={styles.timer}>
                 <View style={styles.timerTextContainer}>
-                    <Text style={styles.timerText}> {time} minutes </Text>
+                    <Text style={styles.timerText}> {time} {timerText} </Text>
                 </View>
                 <View style={styles.incrementDecrementButtons}>
                     <TouchableOpacity onPress={incrementTime}>
