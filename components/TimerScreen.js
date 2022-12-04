@@ -27,7 +27,7 @@ export default function TimerScreen({navigation, route}) {
     return(
         <SafeAreaView style={styles.container}>
             <View style={constants.backButtonStyle}>
-                <BackButton navigation={navigation}/>
+                <BackButton navigation={navigation} previousScreen="GroupSendScreen"/>
             </View>
             <View style={styles.headerInfo}>
                 <Text style={fonts.title}>Set Timer</Text>

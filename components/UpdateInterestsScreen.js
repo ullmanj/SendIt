@@ -4,10 +4,7 @@ import CircleIcon from "./CircleIcon"
 import GreenButton from "./GreenButton"
 import WideGreenButton from "./WideGreenButton";
 import { fonts } from "../themes/fonts"
-import React, { useState } from 'react';
   
-import MapActivities from "../utils/MapActivities"
-
 export default function UpdateInterestsScreen({navigation, route}) {
     // const [DestinationName, setDestinationName] = useState(route?.params?.nextScreen ? route.params.nextScreen : "HomeStack")
     let DestinationName = route?.params?.nextScreen ? route.params.nextScreen : "HomeStack";
@@ -59,7 +56,6 @@ export default function UpdateInterestsScreen({navigation, route}) {
               <WideGreenButton navigation={navigation} title="Done"
                 explicitNavigationFunction={() => navigation.navigate('TabBarGroup', { screen: {DestinationName} })}/>
             </View>
-            <Button title="chat screen" onPress={() => navigation.navigate('ChatScreen', { activity: MapActivities[0], backScreen: 'HomeScreen' })}/>
         </SafeAreaView>
 
     )

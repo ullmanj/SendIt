@@ -48,6 +48,10 @@ export const fonts = {
         paddingHorizontal: 5,
         paddingVertical: 2,
     },
+    activityDetailsOnGreenDiv: {
+        fontSize: 20,
+        marginLeft: 10
+    },
     titleFontSize: TITLE_FONT_SIZE,
     subtitleFontSize: SUBTITLE_FONT_SIZE,
     mediumFontSize: 20,

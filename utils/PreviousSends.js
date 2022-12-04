@@ -2,74 +2,134 @@ export default [
     {
         "name": "Nobu Dinner",
         "participants": [
-            "Jamie",
-            "Michelle",
-            "Pannisy",
-            "Rachel",
-            "Suzanne"
+            { 
+                'name': "Jamie",
+                'profilePic': require("../utils/profilePics/jamie_profilePic.png"),
+            },
+            { 
+                'name': "Michelle",
+                'profilePic': require("../utils/profilePics/michelle_profilePic.png"),
+            },
+            { 
+                'name': "Pannisy",
+                'profilePic': require("../utils/profilePics/pannisy_profilePic.png"),
+            },
+            { 
+                'name': "Rachel",
+                'profilePic': require("../utils/profilePics/rachel_profilePic.png"),
+            },
+            { 
+                'name': "Suzanne",
+                'profilePic': require("../utils/profilePics/suzanne_profilePic.png"),
+            },
         ],
         "date": "10/26/22",
         "price": "$$$",
+        "image": require("../utils/previousSendPics/nobu1.jpeg"),
         "photos": [
-            "../utils/previousSendPics/nobu1.jpeg",
-            "../utils/previousSendPics/nobu2.jpeg",
-            "../utils/previousSendPics/nobu3.jpeg",
-            "../utils/previousSendPics/nobu4.jpeg"
-        ]
+            require("../utils/previousSendPics/nobu1.jpeg"),
+            require("../utils/previousSendPics/nobu2.jpeg"),
+            require("../utils/previousSendPics/nobu3.jpeg"),
+            require("../utils/previousSendPics/nobu4.jpeg")
+        ],
+        "duration": "7-10pm",
+        "hours": "10am-10pm",
     },
     {
         "name": "Camping",
         "participants": [
-            "Emily",
-            "Josh",
-            "Krishnan",
-            "Pannisy"
+            { 
+                'name': "Emily",
+                'profilePic': require("../utils/profilePics/emily_profilePic.png"),
+            },
+            { 
+                'name': "Josh",
+                'profilePic': require("../utils/profilePics/josh_profilePic.png"),
+            },
+            { 
+                'name': "Krishnan",
+                'profilePic': require("../utils/profilePics/krishnan_profilePic.png"),
+            },
+            { 
+                'name': "Pannisy",
+                'profilePic': require("../utils/profilePics/pannisy_profilePic.png"),
+            },
         ],
         "date": "10/28/22",
         "price": "$$",
+        "image": require("../utils/previousSendPics/camping1.jpeg"),
         "photos": [
-            "../utils/previousSendPics/camping1.jpeg",
-            "../utils/previousSendPics/camping2.jpeg",
-            "../utils/previousSendPics/camping3.jpeg"
-        ]
+            require("../utils/previousSendPics/camping1.jpeg"),
+            require("../utils/previousSendPics/camping2.jpeg"),
+            require("../utils/previousSendPics/camping3.jpeg")
+        ],
+        "duration": "10am-10pm",
+        "hours": "10am-10pm",
     },
     {
         "name": "Ziplining",
         "participants": [
-            "Jamie",
-            "Chris",
-            "Krishnan"
+            { 
+                'name': "Jamie",
+                'profilePic': require("../utils/profilePics/jamie_profilePic.png"),
+            },
+            { 
+                'name': "Chris",
+                'profilePic': require("../utils/profilePics/chris_profilePic.png"),
+            },
+            { 
+                'name': "Krishnan",
+                'profilePic': require("../utils/profilePics/krishnan_profilePic.png"),
+            },
         ],
         "date": "11/1/22",
         "price": "$$",
+        "image": require("../utils/previousSendPics/ziplining1.jpeg"),
         "photos": [
-            "../utils/previousSendPics/ziplining1.jpeg",
-            "../utils/previousSendPics/ziplining2.jpeg"
-        ]
+            require("../utils/previousSendPics/ziplining1.jpeg"),
+            require("../utils/previousSendPics/ziplining2.jpeg")
+        ],
+        "duration": "3-6pm",
+        "hours": "10am-5pm",
     },
     {
         "name": "Salt & Straw",
         "participants": [
-            "Michelle"
+            { 
+                'name': "Michelle",
+                'profilePic': require("../utils/profilePics/michelle_profilePic.png"),
+            }
         ],
         "date": "11/2/22",
         "price": "$",
+        "image": require("../utils/previousSendPics/saltAndStraw.png"),
         "photos": [
-            "../utils/previousSendPics/saltAndStraw.png"
-        ]
+            require("../utils/previousSendPics/saltAndStraw.png")
+        ],
+        "duration": "9-10pm",
+        "hours": "12-10pm",
     },
     {
         "name": "Dish Hike",
         "participants": [
-            "Rachel",
-            "Josh"
+            { 
+                'name': "Rachel",
+                'profilePic': require("../utils/profilePics/rachel_profilePic.png"),
+            },
+            { 
+                'name': "Josh",
+                'profilePic': require("../utils/profilePics/josh_profilePic.png"),
+            },
         ],
         "date": "11/3/22",
         "price": "",
+        "image": require("../utils/previousSendPics/hike1.jpeg"),
         "photos": [
-            "../utils/previousSendPics/hike1.jpeg",
-            "../utils/previousSendPics/hike2.jpeg",
-            "../utils/previousSendPics/hike3.jpeg"
-        ]
+            require("../utils/previousSendPics/hike1.jpeg"),
+            require("../utils/previousSendPics/hike2.jpeg"),
+            require("../utils/previousSendPics/hike3.jpeg")
+        ],
+        "duration": "8-10am",
+        "hours": "10am-10pm",
     }
 ]

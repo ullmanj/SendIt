@@ -22,7 +22,7 @@ export default function PendingInvite({ invite }){
         <View style={styles.inviteContainer}>
             <View style={{width: '100%'}}>
                 <Text style={styles.title}>
-                    SendIt! with
+                    Send It! with
                 </Text>
                 <FlatList
                     horizontal

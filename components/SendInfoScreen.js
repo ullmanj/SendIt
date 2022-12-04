@@ -1,10 +1,76 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, SafeAreaView, ScrollView, View, Text, Image, Dimensions, FlatList } from "react-native";
+import { fonts } from "../themes/fonts"
+import { constants } from "../themes/constants"
+import BackButton from "./BackButton"
+import GreenButton from "./GreenButton"
+import MoneySigns from "./MoneySigns"
+import PlainCircleIconOptionalTextBelow from "./PlainCircleIconOptionalTextBelow"
+import { Octicons, Fontisto, AntDesign, FontAwesome5, FontAwesome, Entypo } from '@expo/vector-icons';
+import { colors } from "../themes/colors";
+import React, { useState } from 'react';
 
-export default function SendInfoScreen() {
+export default function SendInfoScreen({ navigation, route }) {
+    const activity = route.params.activity
+
+    const renderItem = ({item, index}) => {
+        return(
+            <PlainCircleIconOptionalTextBelow image={item.profilePic} subtitle={item.name} widthFactor={0.20} heightFactor={0.20}/>
+        );
+    }
     return(
-        <View style={styles.container}>
-            <Text> Send Info Screen. Contains the itinerary, photo stack, and button to enter chat. For past and current sends alike. </Text>
-        </View>
+        <SafeAreaView style={styles.container}>
+            <View style={constants.backButtonStyle}>
+                <BackButton navigation={navigation} previousScreen="SendLogScreen"/>
+            </View>
+            <Text style={{...fonts.title, marginTop: Dimensions.get('screen').width * 0.18}}>{activity.name}</Text>
+            {/* TODO fugre out how to put this in a scrollview while still making the participants list scrollable */}
+            {/* <ScrollView 
+                style={{width: Dimensions.get('screen').width}}
+                contentContainerStyle={{justifyContent: 'center'}}> */}
+            <Text style={fonts.labels}>Participants</Text>
+            <FlatList
+                data={activity.participants}
+                numColumns={3}
+                renderItem={renderItem}
+                keyExtractor={(_, index) => index}
+                nestedScrollEnabled={true}
+            />
+            {/* TODO change these to not be hard coded sizes */}
+            <Text style={fonts.labels}>Photos</Text>
+            <Image source={activity.photos[0]} style={{width: 150, height: 150}}/> 
+            <Text style={fonts.labels}>Details</Text>
+            {/* TODO make sure all icons are entered in the column */}
+            <View style={styles.detailsContainer}>
+                <View style={styles.detailsRow}>
+                    <FontAwesome5 name="calendar-alt" color={'black'} size={30}/>
+                    <Text style={fonts.activityDetailsOnGreenDiv}>{activity.date}</Text>
+                </View>
+                <View style={styles.detailsRow}>
+                    <AntDesign name="clockcircle" color={'black'} size={28}/>
+                    <Text style={fonts.activityDetailsOnGreenDiv}>{activity.duration}</Text>
+                </View>
+                {/* had to add additional styling to these bottom 2 becuase their icons are differently sized than the two above */}
+                <View style={styles.detailsRow}>
+                    <View style={{marginLeft:-4}}>
+                        <Entypo name="location-pin" color={'black'} size={32}/>
+                    </View>
+                    <Text style={fonts.activityDetailsOnGreenDiv}>549 University Ave</Text>
+                </View>
+                <View style={{...styles.detailsRow, marginBottom: 0}}>
+                    <View style={{marginLeft:2}}>
+                        <FontAwesome name="dollar" color={'black'} size={30}/>
+                    </View>
+                    <View style={{marginLeft: 17}}>
+                        <MoneySigns moneySigns="$$" fontSize={20} fontWeight={"default"}/>
+                    </View>
+                </View>
+            </View>
+            {/* </ScrollView> */}
+            <View style={{flexDirection: 'row'}}>
+                <GreenButton title="View Chat" navigation={navigation} nextScreen="ChatScreen" paramsToPassOn={{'activity': activity}}/>
+                <Octicons name="device-camera" color={colors.darkgreen} size={60} style={{marginLeft: 40}}/>
+            </View>
+        </SafeAreaView>
     );
 }
 
@@ -15,4 +81,18 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    detailsContainer: {
+        backgroundColor: colors.lightgreen,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: Dimensions.get('window').width * 0.83,
+        borderRadius: constants.borderRadius,
+        padding: Dimensions.get('window').width * 0.06,
+    },
+    detailsRow: {
+        flexDirection: 'row', 
+        alignSelf: 'flex-start', 
+        alignItems: 'center',
+        marginBottom: Dimensions.get('window').height * 0.02
+    }
   });

@@ -5,10 +5,11 @@ import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
 import { shapes } from '../themes/shapes'
 
-export default function CircleIconTextBelow(props) {
+export default function CircleIconTextBelow({ pressHandler, showBorderColor=true, image, title }) {
     const [borderColor, setBorderColor] = useState(false)
 
     function changeBorderColor() {
+        if (!showBorderColor) return; // no need to change border color state variable if prop is false
         if (borderColor == true) {
             setBorderColor(false)
         } else {
@@ -18,7 +19,7 @@ export default function CircleIconTextBelow(props) {
     return(
         <TouchableOpacity activeOpacity={.7} onPress={()=>{
             changeBorderColor();
-            props.pressHandler && props.pressHandler();
+            pressHandler();
             }}>
             <View style={{
                 // elevation: 10, // for android
@@ -29,12 +30,12 @@ export default function CircleIconTextBelow(props) {
             }}
             >
                 <Image 
-                    source={props.image} 
+                    source={image} 
                     resizeMode="cover" 
                     style={{...shapes.circle, borderWidth: borderColor ? 5 : 0 }}
                 />
             </View>
-            <Text style={styles.title}>{props.title}</Text>
+            <Text style={styles.title}>{title}</Text>
         </TouchableOpacity>
 
     );
