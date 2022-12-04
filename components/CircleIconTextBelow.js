@@ -21,11 +21,12 @@ export default function CircleIconTextBelow(props) {
             props.pressHandler && props.pressHandler();
             }}>
             <View style={{
-                elevation: 10, // for android
-                shadowColor: '#171717',
-                shadowOffset: { width: 0, height: 0},
-                shadowOpacity: 0.6,
-                shadowRadius: 4}}
+                // elevation: 10, // for android
+                // shadowColor: '#171717',
+                // shadowOffset: { width: 0, height: 0},
+                // shadowOpacity: 0.6,
+                // shadowRadius: 4
+            }}
             >
                 <Image 
                     source={props.image} 
