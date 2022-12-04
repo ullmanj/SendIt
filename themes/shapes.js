@@ -11,7 +11,7 @@ export const shapes = {
         marginBottom: 4,
         marginTop: 10,
         borderRadius: 100, 
-        borderColor: colors.darkgreen, 
+        borderColor: colors.lightpink, 
         shadowColor: '#171717',
         shadowOffset: {width: 0, height: 0},
         shadowOpacity: 0.8,

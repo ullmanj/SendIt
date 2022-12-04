@@ -52,5 +52,7 @@ export const fonts = {
     subtitleFontSize: SUBTITLE_FONT_SIZE,
     mediumFontSize: 20,
     smallFontSize: 15,
+    chatHeaderFontSize: 18,
+    chatSubheaderFontSize: 15,
     circleIconTextFontSize: 15,
 };

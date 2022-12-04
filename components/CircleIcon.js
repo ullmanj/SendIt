@@ -6,7 +6,7 @@ import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
 import { shapes } from '../themes/shapes'
 
-export default function CircleIcon(props) {
+export default function CircleIcon({ image, title, widthFactor=0.22, heightFactor=0.22 }) {
     const [borderColor, setBorderColor] = useState(false)
 
     function changeBorderColor() {
@@ -19,35 +19,19 @@ export default function CircleIcon(props) {
     return(
         <TouchableOpacity activeOpacity={.7} onPress={()=>{changeBorderColor()}}>
             <ImageBackground 
-                source={props.image} 
+                source={image} 
                 resizeMode="cover" 
-                style={shapes.circle}
+                style={{...shapes.circle, width: Dimensions.get('window').width * widthFactor, height: Dimensions.get('window').width * heightFactor}}
                 imageStyle={{ 
                     elevation: 10, // adds shadows for android
                     borderRadius: 100, 
-                    borderColor: colors.darkgreen, 
+                    borderColor: colors.lightpink, 
                     borderWidth: borderColor ? 5 : 0 
                 }}
                 >
-                <Text style={{...fonts.iconText, fontWeight: 'bold'}}>{props.title}</Text>
+                <Text style={{...fonts.iconText, fontWeight: 'bold'}}>{title}</Text>
             </ImageBackground>
         </TouchableOpacity>
 
     );
 }
-
-const styles = StyleSheet.create({
-    title: {
-        alignItems: 'center',
-        textAlign: 'center',
-        justifyContent: 'center',
-        fontSize: fonts.circleIconTextFontSize,
-        color: 'black',
-        backgroundColor: "#FFFFFFd0",
-        borderRadius: 10,
-        overflow:'hidden',
-        paddingHorizontal: 5,
-        paddingVertical: 2,
-        fontWeight: 'bold'
-    },
-  });
