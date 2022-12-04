@@ -2,10 +2,16 @@ import { StyleSheet, View, SafeAreaView, Text, Button, Dimensions, FlatList } fr
 import { colors } from "../themes/colors";
 import { constants } from "../themes/constants";
 import { fonts } from "../themes/fonts";
+import Friends from "../utils/Friends";
+import CircleIcon from "./CircleIcon";
+import PlainCircleIconOptionalTextBelow from "./PlainCircleIconOptionalTextBelow";
 
 export default function PendingInvite({ invite }){
-    const renderListItem = () => {
-        
+    const renderListItem = ({item}) => {
+        console.log(item)
+        return(
+            <PlainCircleIconOptionalTextBelow image={item.profilePic} subtitle={item.name} widthFactor={0.11} heightFactor={0.11}/>
+        );
     }
 
     return(
@@ -15,11 +21,12 @@ export default function PendingInvite({ invite }){
                     Send it with
                 </Text>
                 <FlatList
-                    horiztonal
-                    data={ invite }
-                    numColumns={1}
+                    horizontal
+                    pagingEnabled={true}
+                    showsHorizontalScrollIndicator={false}
+                    data={ invite.participants }
                     renderItem={renderListItem}
-                    keyExtractor={keyExtractor}
+                    keyExtractor={(item, index) => item.name}
                     initialNumToRender={6}
                 />
             </View>

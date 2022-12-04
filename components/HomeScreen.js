@@ -8,7 +8,7 @@ export default function HomeScreen({navigation}) {
     return(
         <SafeAreaView style={styles.container}>
             <Text style={fonts.title}>Pending Invites</Text>
-            <PendingInvite/>
+            <PendingInvite invite={PendingInvites[0]}/>
             {/* <PendingInviteCarousel/> */}
             <Text style={fonts.title}>Your Status</Text>
         </SafeAreaView>
