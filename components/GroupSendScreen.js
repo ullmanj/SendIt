@@ -7,12 +7,7 @@ import React, { useState } from 'react';
 import { colors } from "../themes/colors";
 
 export default function GroupSendScreen({navigation}) {
-    const [searchBar, setSearchBar] = useState(require('../utils/miscPics/searchBar.png'))
     const [selectedFriendBools, setSelectedFriendBools] = useState(Array(Friends.length).fill(false));
-
-    function searchName() {
-        setSearchBar(require('../utils/miscPics/searchBarFilledIn.png'))
-    }
 
     renderItem = ({ item, index }) => {
         if (index > 8) {
@@ -63,7 +58,6 @@ export default function GroupSendScreen({navigation}) {
                     }}
                 />
             </View>
-            {/* TODO: use a params prop to pass array of selected friends using boolean 'bitmap' to determine those */}
         </View>
     );
 }

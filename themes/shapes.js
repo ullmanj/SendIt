@@ -12,9 +12,9 @@ export const shapes = {
         marginTop: 10,
         borderRadius: 100, 
         borderColor: colors.lightpink, 
-        shadowColor: '#171717',
-        shadowOffset: {width: 0, height: 0},
-        shadowOpacity: 0.8,
-        shadowRadius: 4,
+        // shadowColor: '#171717',
+        // shadowOffset: {width: 0, height: 0},
+        // shadowOpacity: 0.8,
+        // shadowRadius: 4,
     },
 };
