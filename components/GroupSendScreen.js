@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TouchableOpacity, Image, FlatList, Dimensions, Alert} from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Image, FlatList, Dimensions, Alert, SafeAreaView} from "react-native";
 import CircleIconTextBelow from "./CircleIconTextBelow"
 import Friends from '../utils/Friends'
 import { fonts } from "../themes/fonts"
@@ -28,7 +28,7 @@ export default function GroupSendScreen({navigation}) {
     }
 
     return(
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={fonts.title}>Rally the Troops!</Text>
             <Text style={fonts.subtitle}>Invite your available friends</Text>
             <Text style={fonts.labels}>Search friends</Text>
@@ -64,7 +64,7 @@ export default function GroupSendScreen({navigation}) {
                 />
             </View>
             {/* TODO: use a params prop to pass array of selected friends using boolean 'bitmap' to determine those */}
-        </View>
+        </SafeAreaView>
     );
 }
 

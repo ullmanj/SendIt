@@ -47,7 +47,7 @@ export default function TimerScreen({navigation, route}) {
                 </View>
             </View>
             <View style={styles.nextButton}>
-                <GreenButton navigation={navigation} title="Next" nextScreen="MapScreen" paramsToPassOn={{'minutes': time, 'selectedFriendBools': route.params}}/>
+                <GreenButton navigation={navigation} title="Next" nextScreen="MapScreen" paramsToPassOn={{'minutes': time, 'seconds': 0, 'selectedFriendBools': route.params}}/>
             </View>    
         </SafeAreaView>
     );

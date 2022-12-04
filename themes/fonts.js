@@ -11,7 +11,7 @@ export const fonts = {
         alignSelf: 'left',
         fontWeight: '700',
         marginLeft: Dimensions.get('window').width * 0.09,
-        marginTop: Dimensions.get('window').height * 0.1,
+        marginTop: Dimensions.get('window').height * 0.05,  // changed from .1 for use within SafeAreaView
         marginBottom: Dimensions.get('window').height * 0.01,
     },
     subtitle: {

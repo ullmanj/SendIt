@@ -1,7 +1,8 @@
-import { StyleSheet, View, Text, Button, SectionList, Dimensions, FlatList } from "react-native";
+import { StyleSheet, View, Text, Button, SectionList, Dimensions, FlatList, SafeAreaView } from "react-native";
 import Interests from "../utils/Interests"
 import CircleIcon from "./CircleIcon"
 import GreenButton from "./GreenButton"
+import WideGreenButton from "./WideGreenButton";
 import { fonts } from "../themes/fonts"
 import React, { useState } from 'react';
   
@@ -47,7 +48,7 @@ export default function UpdateInterestsScreen({navigation, route}) {
     }
   
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={fonts.title}>Update your interests</Text>
             <SectionList
                 sections={Interests}
@@ -55,11 +56,11 @@ export default function UpdateInterestsScreen({navigation, route}) {
                 renderItem={renderSection}
             /> 
             <View style={styles.doneButton}>
-              <GreenButton navigation={navigation} title="Done"
+              <WideGreenButton navigation={navigation} title="Done"
                 explicitNavigationFunction={() => navigation.navigate('TabBarGroup', { screen: {DestinationName} })}/>
             </View>
             <Button title="chat screen" onPress={() => navigation.navigate('ChatScreen', { activity: MapActivities[0], backScreen: 'HomeScreen' })}/>
-        </View>
+        </SafeAreaView>
 
     )
   }
@@ -74,5 +75,8 @@ const styles = StyleSheet.create({
     doneButton: {
       paddingTop: 5,
       paddingBottom: 10,
+      width: '85%',
+      alignItems: 'center',
+      marginVertical: 10
     },
   });

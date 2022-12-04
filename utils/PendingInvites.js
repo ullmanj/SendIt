@@ -24,6 +24,7 @@ export default [
         ],
         "minLeft": "5",
         "secLeft": "32",
+        "selectedFriendBools": [true, true, true, true, true, false, false, false, false, false],
     },
     {
         "participants": [
@@ -38,6 +39,7 @@ export default [
         ],
         "minLeft": "0",
         "secLeft": "47",
+        "selectedFriendBools": [false, false, false, false, false, false, true, false, true, false],
     },
     {
         "participants": [
@@ -56,5 +58,6 @@ export default [
         ],
         "minLeft": "14",
         "secLeft": "26",
+        "selectedFriendBools": [false, false, false, false, false, true, false, true, false, true],
     },
 ]

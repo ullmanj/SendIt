@@ -25,6 +25,7 @@ export default function MapScreen({ route, navigation }) {
     const [mapLoaded, setMapLoaded] = useState(false);
     const [selectedMarkerActivityIndex, setSelectedMarkerActivityIndex] = useState();
     const [voteIndex, setVoteIndex] = useState(-1);
+    let timeLeft = parseInt(route.params.minutes) * 60 + parseInt(route.params.seconds);
 
     return(
         <SafeAreaView style={styles.mapContainer}> 
@@ -89,7 +90,7 @@ export default function MapScreen({ route, navigation }) {
                         'Are you sure you want to be removed from this Send?',
                         [
                           {text: 'Cancel', onPress: () => {}, style: 'cancel'},
-                          {text: 'Yes', onPress: () => navigation.navigate('GroupSendScreen')},
+                          {text: 'Yes', onPress: () => navigation.navigate('TabBarGroup')},// This seems to work! Just brings you to where you came from to get to the map. I think this is good as is.
                         ],
                         { cancelable: false }
                       )
@@ -101,7 +102,7 @@ export default function MapScreen({ route, navigation }) {
             <View style={styles.overlay} pointerEvents={'box-none'}>
                 <View style={styles.headerBlurb}>
                     <CountDown
-                        until={route.params.minutes * 60} // this is how long (in seconds) the timer will be set for
+                        until={timeLeft} // this is how long (in seconds) the timer will be set for
                         // until={20} // uncomment this line (and comment the line before) if you want the timer to go quickly when you are testing/coding
                         size={30}
                         onFinish={() => alert('Finished')} // TODO we will need to update this to take the user to the next page depending on what was voted on the most
