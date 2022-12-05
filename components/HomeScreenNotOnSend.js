@@ -2,9 +2,8 @@ import { StyleSheet, SafeAreaView, View, Text, Button, Dimensions } from "react-
 import { fonts } from "../themes/fonts";
 import { useState } from "react";
 import PendingInvites from "../utils/PendingInvites";
-import PendingInvite from "./PendingInvite";
-import PendingInviteCarousel from "./PendingInviteCarousel";
 import Toggle from "./Toggle";
+import PendingInviteCarousel from "./PendingInviteCarousel";
 
 export default function HomeScreenNotOnSend() {
     const [isFree, setIsFree] = useState(true);
@@ -12,11 +11,9 @@ export default function HomeScreenNotOnSend() {
     return(
         <SafeAreaView style={styles.container}>
             <Text style={[fonts.title, styles.extraTitleStyling]}>Pending Invites</Text>
-            <PendingInvite invite={PendingInvites[0]}/>
-            {/* <PendingInviteCarousel/> */}
+            <PendingInviteCarousel pendingInvites={true} data={PendingInvites}/>
             <Text style={[fonts.title, styles.extraTitleStyling]}>Your Status</Text>
-            <ToggleContainer isFree={isFree} setIsFree={setIsFree}/>
-            
+            <ToggleContainer isFree={isFree} setIsFree={setIsFree}/>     
         </SafeAreaView>
     );
 }

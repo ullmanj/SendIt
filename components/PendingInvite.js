@@ -26,12 +26,10 @@ export default function PendingInvite({ invite }){
                 </Text>
                 <FlatList
                     horizontal
-                    pagingEnabled={true}
                     showsHorizontalScrollIndicator={false}
                     data={ invite.participants }
                     renderItem={renderListItem}
                     keyExtractor={(item, index) => item.name}
-                    initialNumToRender={6}
                 />
             </View>
             <View style={styles.timeContainer}>
@@ -56,7 +54,6 @@ const styles = StyleSheet.create({
       backgroundColor: colors.lightgreen,
       alignItems: 'center',
       justifyContent: 'center',
-    //   height: Dimensions.get('window').height * 0.5,
       width: Dimensions.get('window').width * 0.7,
       borderRadius: constants.borderRadius,
       padding: Dimensions.get('window').width * 0.06,
