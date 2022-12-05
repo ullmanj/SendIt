@@ -14,7 +14,7 @@ export default function SendInfoScreen({ navigation, route }) {
 
     const renderItem = ({item, index}) => {
         return(
-            <PlainCircleIconOptionalTextBelow image={item.profilePic} subtitle={item.name} widthFactor={0.20} heightFactor={0.20}/>
+            <PlainCircleIconOptionalTextBelow image={item.profilePic} subtitle={item.name} widthFactor={0.21} heightFactor={0.21}/>
         );
     }
     return(
@@ -23,21 +23,22 @@ export default function SendInfoScreen({ navigation, route }) {
                 <BackButton navigation={navigation} previousScreen="SendLogScreen"/>
             </View>
             <Text style={{...fonts.title, marginTop: Dimensions.get('screen').width * 0.18}}>{activity.name}</Text>
-            {/* TODO fugre out how to put this in a scrollview while still making the participants list scrollable */}
-            {/* <ScrollView 
-                style={{width: Dimensions.get('screen').width}}
-                contentContainerStyle={{justifyContent: 'center'}}> */}
+            {/* TODO figure out how to put this in a scrollview while still making the participants list scrollable */}
+            <ScrollView 
+                style={{width: Dimensions.get('screen').width}}>
             <Text style={fonts.labels}>Participants</Text>
-            <FlatList
-                data={activity.participants}
-                numColumns={3}
-                renderItem={renderItem}
-                keyExtractor={(_, index) => index}
-                nestedScrollEnabled={true}
-            />
+            <View style={{marginLeft: Dimensions.get('window').width * 0.04}}>
+                <FlatList
+                    data={activity.participants}
+                    numColumns={3}
+                    renderItem={renderItem}
+                    keyExtractor={(_, index) => index}
+                    nestedScrollEnabled={true}
+                />
+            </View>
             {/* TODO change these to not be hard coded sizes */}
             <Text style={fonts.labels}>Photos</Text>
-            <Image source={activity.photos[0]} style={{width: 150, height: 150}}/> 
+            <Image source={activity.photos[0]} style={{width: 150, height: 150, alignSelf: 'center'}}/> 
             <Text style={fonts.labels}>Details</Text>
             {/* TODO make sure all icons are entered in the column */}
             <View style={styles.detailsContainer}>
@@ -65,11 +66,11 @@ export default function SendInfoScreen({ navigation, route }) {
                     </View>
                 </View>
             </View>
-            {/* </ScrollView> */}
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row', alignSelf: 'center'}}>
                 <GreenButton title="View Chat" navigation={navigation} nextScreen="ChatScreen" paramsToPassOn={{'activity': activity}}/>
                 <Octicons name="device-camera" color={colors.darkgreen} size={60} style={{marginLeft: 40}}/>
             </View>
+            </ScrollView>
         </SafeAreaView>
     );
 }
@@ -83,11 +84,10 @@ const styles = StyleSheet.create({
     },
     detailsContainer: {
         backgroundColor: colors.lightgreen,
-        alignItems: 'center',
-        justifyContent: 'center',
         width: Dimensions.get('window').width * 0.83,
         borderRadius: constants.borderRadius,
         padding: Dimensions.get('window').width * 0.06,
+        alignSelf: 'center'
     },
     detailsRow: {
         flexDirection: 'row', 
