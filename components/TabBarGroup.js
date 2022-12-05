@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View } from 'react-native';
 // Font and Icon Imports
 import { Octicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 // Local Imports
 import HomeStack from './HomeStack';
 import SendStack from './SendStack';
@@ -17,17 +19,21 @@ export default function TabBarGroup() {
       // I know we're gonna update this tab later, but I adjusted the size to take up more of the screen to reflect the size of the tab in the figma
       <Tab.Navigator screenOptions={({ route }) => ({  // Adapted from cs47-lecture5b-demo
           tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
+            // let iconName;
+            let icon;
 
             if (route.name === 'HomeStack') {
-              iconName = 'home'
+              // iconName = 'home'
+              icon = <Octicons name={'home'} size={40} color={color} />;
             } else if (route.name === 'SendStack') {
-              iconName = 'paper-airplane'
+              // iconName = 'paper-airplane'
+              icon = <FontAwesome name={'paper-plane'} size={38} color={color} />;
             } else if (route.name === 'LogStack') {
-              iconName = 'clock'
+              // iconName = 'clock'
+              icon = <FontAwesome5 name={'clock'} size={40} color={color} />;
             }
-            // You can return any component that you like here!
-            return <Octicons name={iconName} size={40} color={color} />;
+            // return <Octicons name={iconName} size={40} color={color} />;
+            return icon;
           },
           tabBarActiveTintColor: colors.darkgreen,
           tabBarInactiveTintColor: 'gray',
