@@ -5,7 +5,7 @@ import { constants } from "../themes/constants";
 import { colors } from "../themes/colors";
 import { FontAwesome } from '@expo/vector-icons';
 
-    const VERT_SIZE = Dimensions.get('window').width * 0.2;
+    const VERT_SIZE = Dimensions.get('window').width * 0.2;  // may want to make this a fixed value if it looks wierd on other phone shapes
     const CIRCLE_SIZE = VERT_SIZE * 0.8;
     const PLANE_ICON_SIZE = CIRCLE_SIZE * 0.6;
     const CRUMPLED_ICON_SIZE = CIRCLE_SIZE * 0.7;
