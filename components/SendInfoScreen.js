@@ -8,6 +8,7 @@ import PlainCircleIconOptionalTextBelow from "./PlainCircleIconOptionalTextBelow
 import { Octicons, Fontisto, AntDesign, FontAwesome5, FontAwesome, Entypo } from '@expo/vector-icons';
 import { colors } from "../themes/colors";
 import React, { useState } from 'react';
+import ImageCarousel2 from "./ImageCarousel2"
 
 export default function SendInfoScreen({ navigation, route }) {
     const activity = route.params.activity
@@ -23,7 +24,6 @@ export default function SendInfoScreen({ navigation, route }) {
                 <BackButton navigation={navigation} previousScreen="SendLogScreen"/>
             </View>
             <Text style={{...fonts.title, marginTop: Dimensions.get('screen').width * 0.18}}>{activity.name}</Text>
-            {/* TODO figure out how to put this in a scrollview while still making the participants list scrollable */}
             <ScrollView 
                 style={{width: Dimensions.get('screen').width}}>
             <Text style={fonts.labels}>Participants</Text>
@@ -36,11 +36,11 @@ export default function SendInfoScreen({ navigation, route }) {
                     nestedScrollEnabled={true}
                 />
             </View>
-            {/* TODO change these to not be hard coded sizes */}
             <Text style={fonts.labels}>Photos</Text>
+            {/* TODO make this image carousel */}
             <Image source={activity.photos[0]} style={{width: 150, height: 150, alignSelf: 'center'}}/> 
+            {/* <ImageCarousel2 data={activity.photos}/> */}
             <Text style={fonts.labels}>Details</Text>
-            {/* TODO make sure all icons are entered in the column */}
             <View style={styles.detailsContainer}>
                 <View style={styles.detailsRow}>
                     <FontAwesome5 name="calendar-alt" color={'black'} size={30}/>

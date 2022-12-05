@@ -1,4 +1,5 @@
-import { SafeAreaView, View, Dimensions, useWindowDimensions } from "react-native";
+// sorry for poor file naming lol, this is for the carousel in the SendInfocreen
+import { SafeAreaView, View, Text, Dimensions, Pressable, useWindowDimensions, Image } from "react-native";
 import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
 import { constants } from "../themes/constants";
@@ -12,7 +13,7 @@ import Animated, {
     useAnimatedRef,
   } from 'react-native-reanimated';
 
-export default function Carousel({data}) {
+export default function ImageCarousel2({data}) {
     const scrollViewRef = useAnimatedRef(null);
     const interval = useRef();
     const [newData] = useState([
@@ -62,13 +63,24 @@ export default function Carousel({data}) {
                 transform: [{scale}],
               };
             });
-            if (!item.minLeft) {
+            if (item.key != null) {
               return <View style={{width: SPACER}} key={index} />;
             }
             return (
                 <View key={index}>
                     <Animated.View style={[style]}>
-                        <PendingInvite invite={newData[index]} />
+                      <Pressable onPress={() => {
+                          navigation.navigate('LogStack', {
+                            screen: 'SendInfoScreen',
+                            params: { activity: item },
+                        })
+                      }}>
+                        <View style={{flexDirection: 'column'}}>
+                          <Image style={{width: SIZE, height: SIZE, aspectRatio: 1, borderRadius: 20, marginBottom: 10}}
+                            source={item.photos[index]}/>
+                          <Text style={{fontSize: fonts.mediumFontSize, textAlign: 'center'}}>{item.name}</Text>
+                        </View>
+                      </Pressable>
                     </Animated.View>
                 </View>
             );

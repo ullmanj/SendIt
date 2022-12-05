@@ -3,6 +3,7 @@ import CircleIconTextBelow from "./CircleIconTextBelow"
 import PreviousSends from '../utils/PreviousSends'
 import { fonts } from "../themes/fonts"
 import React, { useState } from 'react';
+import ImageCarousel from "./ImageCarousel"
 
 export default function SendLogScreen({navigation}) {
     renderItem = ({ item, index }) => {
@@ -19,12 +20,7 @@ export default function SendLogScreen({navigation}) {
     return(
         <SafeAreaView style={styles.container}>
             <Text style={fonts.title}>Your Memories</Text>
-            {/* TODO try to make image carousel ?? !! ?? 🥴 */}
-            <View style={{marginBottom: Dimensions.get('window').height * 0.035, alignItems: 'center'}}>
-                {/* TODO made width and height not hard coded */}
-                <Image source={require("../utils/previousSendPics/camping1.jpeg")} style={{width: 200, height: 200}}/> 
-                <Text style={{fontSize: fonts.mediumFontSize}}>Hiking</Text>
-            </View>
+            <ImageCarousel data={PreviousSends}/>
             <Text style={fonts.labels}>Search</Text>
             <Image style={styles.searchBar} source={require('../utils/miscPics/searchBar.png')}/>
             <FlatList
