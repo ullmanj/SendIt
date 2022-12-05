@@ -6,7 +6,7 @@ import PendingInvite from "./PendingInvite";
 import PendingInviteCarousel from "./PendingInviteCarousel";
 import Toggle from "./Toggle";
 
-export default function HomeScreenNotOnSend({navigation}) {
+export default function HomeScreenNotOnSend() {
     const [isFree, setIsFree] = useState(true);
 
     return(
