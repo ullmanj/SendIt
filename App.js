@@ -23,7 +23,7 @@ export default function App() {
             <Stack.Screen name="UpdateInterestsScreen" component={UpdateInterestsScreen} />
             <Stack.Screen name="TabBarGroup" component={TabBarGroup} />
             {/* Below is the Process Funnel (no nav bar) */}
-            <Stack.Screen name="TimerScreen" component={TimerScreen} />
+            <Stack.Screen name="TimerScreen" component={TimerScreen} options={{ presentation: 'modal' }}/>
             <Stack.Screen name="MapScreen" component={MapScreen} />
             <Stack.Screen name="ChatScreen" component={ChatScreen} />
         </Stack.Navigator>
