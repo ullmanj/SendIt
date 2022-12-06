@@ -44,7 +44,6 @@ export default function PendingInvite({ invite, setCurrentSend }){
                 </Text>
             </View>
             <WideGreenButton navigation={navigation} title={"Accept"} nextScreen={"MapScreen"} activeColor={'#fff'}
-                additionalOnPress={() => setCurrentSend(invite)}
                 paramsToPassOn={{'minutes': invite.minLeft, 'seconds': invite.secLeft, 'selectedFriendBools': {'selectedFriendBools': invite.selectedFriendBools}}}/>
         </View>
     );

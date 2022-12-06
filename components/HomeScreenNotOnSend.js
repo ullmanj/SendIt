@@ -5,13 +5,13 @@ import PendingInvites from "../utils/PendingInvites";
 import Toggle from "./Toggle";
 import PendingInviteCarousel from "./PendingInviteCarousel";
 
-export default function HomeScreenNotOnSend({setCurrentSend}) {
+export default function HomeScreenNotOnSend() {
     const [isFree, setIsFree] = useState(true);  // toggle
 
     return(
         <SafeAreaView style={styles.container}>
             <Text style={[fonts.title, styles.extraTitleStyling]}>Pending Invites</Text>
-            <PendingInviteCarousel pendingInvites={true} data={PendingInvites} setCurrentSend={setCurrentSend}/>
+            <PendingInviteCarousel pendingInvites={true} data={PendingInvites}/>
             <Text style={[fonts.title, styles.extraTitleStyling]}>Your Status</Text>
             <ToggleContainer isFree={isFree} setIsFree={setIsFree}/>     
         </SafeAreaView>

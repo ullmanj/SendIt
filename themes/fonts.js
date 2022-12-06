@@ -50,7 +50,7 @@ export const fonts = {
     },
     activityDetailsOnGreenDiv: {
         fontSize: 20,
-        marginLeft: 10
+        marginLeft: 20,  // I changed this from 10 to 20
     },
     titleFontSize: TITLE_FONT_SIZE,
     subtitleFontSize: SUBTITLE_FONT_SIZE,

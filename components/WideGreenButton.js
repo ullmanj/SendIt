@@ -4,7 +4,7 @@ import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
 import { constants } from "../themes/constants";
 
-export default function WideGreenButton({ navigation, title, nextScreen, deactivated=false, paramsToPassOn=null, deactivatedPressHandler=null, explicitNavigationFunction=null, activeColor=colors.lightgreen, additionalOnPress=null}) {
+export default function WideGreenButton({ navigation, title, nextScreen, deactivated=false, paramsToPassOn=null, deactivatedPressHandler=null, explicitNavigationFunction=null, activeColor=colors.lightgreen, additionalOnPress=null, shouldNavigate=true}) {
     const styles = StyleSheet.create({
         buttonContainer: {
             // width: Dimensions.get('window').width * .85,
@@ -28,13 +28,15 @@ export default function WideGreenButton({ navigation, title, nextScreen, deactiv
                             additionalOnPress();
                         }
                         
-                        if (explicitNavigationFunction !== null) {
-                            explicitNavigationFunction();
-                        } else {
-                            if (!paramsToPassOn) {
-                                navigation.navigate(nextScreen);
+                        if (shouldNavigate) {
+                            if (explicitNavigationFunction !== null) {
+                                explicitNavigationFunction();
                             } else {
-                                navigation.navigate(nextScreen, paramsToPassOn);
+                                if (!paramsToPassOn) {
+                                    navigation.navigate(nextScreen);
+                                } else {
+                                    navigation.navigate(nextScreen, paramsToPassOn);
+                                }
                             }
                         }
                     } else {

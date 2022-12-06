@@ -19,6 +19,7 @@ import BackButtonNoAction from "./BackButtonNoAction";
 // import MapVotedMenu from "./MapVotedMenu";
 import DefaultMapPreview from "./DefaultMapPreview";
 import FriendLocation from "./FriendLocation";
+import PreviousSends from "../utils/PreviousSends";
 
 export default function MapScreen({ route, navigation, currentSend, setCurrentSend }) {
     const selectedFriendBools = route.params.selectedFriendBools;
@@ -91,7 +92,7 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                         [
                           {text: 'Cancel', onPress: () => {}, style: 'cancel'},
                           {text: 'Yes', onPress: () => {
-                            setCurrentSend(null);
+                            /* don't need to do anything here with setting current send*/
                             navigation.navigate('TabBarGroup');
                           }},// This seems to work. Just brings you to where you came from to get to the map. I think this is good as is.
                         ],
@@ -116,6 +117,7 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                         timeToShow={['M', 'S']}
                         timeLabels={{m: '', s: ''}}
                     />
+                    <Button title="Go to chat" onPress={() => setCurrentSend(selectedMarkerActivityIndex === undefined ? MapActivities[0] /*default 'chose one at random'*/ : MapActivities[selectedMarkerActivityIndex])}/>
                 </View>
                 
                 { selectedMarkerActivityIndex === undefined &&

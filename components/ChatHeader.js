@@ -13,7 +13,7 @@ export default function ChatHeader(props) {
     const { navigation, activity, backScreen } = props
     return(
         <SafeAreaView style={styles.container}>
-            <Pressable style={constants.backButtonStyle} onPress={() => {navigation.navigate(backScreen)}}>
+            <Pressable style={constants.backButtonStyle} onPress={() => {navigation.goBack()}}> 
                 <BackButtonNoAction position="relative"/>
             </Pressable>
             <View style={styles.centerText}>

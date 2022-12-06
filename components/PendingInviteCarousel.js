@@ -12,7 +12,7 @@ import Animated, {
     useAnimatedRef,
   } from 'react-native-reanimated';
 
-export default function Carousel({data, setCurrentSend}) {
+export default function Carousel({data}) {
     const scrollViewRef = useAnimatedRef(null);
     const interval = useRef();
     const [newData] = useState([
@@ -68,7 +68,7 @@ export default function Carousel({data, setCurrentSend}) {
             return (
                 <View key={index}>
                     <Animated.View style={[style]}>
-                        <PendingInvite invite={newData[index]} setCurrentSend={setCurrentSend}/>
+                        <PendingInvite invite={newData[index]}/>
                     </Animated.View>
                 </View>
             );

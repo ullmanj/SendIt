@@ -14,15 +14,15 @@ export default function HomeScreen({navigation, currentSend, setCurrentSend}) {
     return(
         <View style={{flex: 1,}}>
             { currentSend !== null && <HomeScreenOnSend currentSend={currentSend} setCurrentSend={setCurrentSend}/>  }
-            { currentSend === null && <HomeScreenNotOnSend setCurrentSend={setCurrentSend}/> }
+            { currentSend === null && <HomeScreenNotOnSend /> }
             
             <SafeAreaView style={{position: 'absolute', top: 30, right: 10, zIndex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                 {/* <Text style={{fontSize: fonts.smallFontSize}}>On a Send:  </Text> */}
                 {/* <Switch
                     trackColor={{ false: colors.lightgray, true: colors.lightgreen }}
                     thumbColor={'white'}
-                    onValueChange={() => setIsOnSend(previous => !previous)}
-                    value={isOnSend}
+                    onValueChange={() => setCurrentSend(() => {currentSend === null ? PreviousSends[0] : null})}
+                    value={currentSend !== null}
                 /> */}
             </SafeAreaView>
         </View>
