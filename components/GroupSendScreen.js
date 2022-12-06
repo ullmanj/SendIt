@@ -36,7 +36,7 @@ export default function GroupSendScreen({navigation}) {
                 keyExtractor={(_, index) => index}
             />
             <View style={styles.bottomButtons}>
-                <TouchableOpacity style={{justifyContent: 'center', alignItems: 'center'}} onPress={() => navigation.navigate('UpdateInterestsScreen', {nextScreen: "SendStack"})}>
+                <TouchableOpacity style={{justifyContent: 'center', alignItems: 'center'}} onPress={() => navigation.navigate('UpdateInterestsScreen', {'nextScreen': "SendStack"})}>
                     <Text style={styles.updateInterestText}>
                         Update
                     </Text>

@@ -14,7 +14,7 @@ import { colors } from '../themes/colors'
 
 const Tab = createBottomTabNavigator();
 
-export default function TabBarGroup() {
+export default function TabBarGroup({currentSend, setCurrentSend}) {
   return (
       // I know we're gonna update this tab later, but I adjusted the size to take up more of the screen to reflect the size of the tab in the figma
       <Tab.Navigator screenOptions={({ route }) => ({  // Adapted from cs47-lecture5b-demo
@@ -45,9 +45,15 @@ export default function TabBarGroup() {
         })}
         >
 
-        <Tab.Screen name="HomeStack" component={HomeStack} />
-        <Tab.Screen name="SendStack" component={SendStack} />
-        <Tab.Screen name="LogStack" component={LogStack} />
+        <Tab.Screen name="HomeStack">
+          {(props) => <HomeStack  {...props} currentSend={currentSend} setCurrentSend={setCurrentSend}/>}
+        </Tab.Screen>
+        <Tab.Screen name="SendStack">
+          {(props) => <SendStack  {...props} currentSend={currentSend} setCurrentSend={setCurrentSend}/>}
+        </Tab.Screen>
+        <Tab.Screen name="LogStack">
+          {(props) => <LogStack  {...props} currentSend={currentSend} setCurrentSend={setCurrentSend}/>}
+        </Tab.Screen>
       </Tab.Navigator>
   );
 }

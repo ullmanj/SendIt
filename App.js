@@ -10,10 +10,13 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Octicons } from '@expo/vector-icons';
 // Local Imports
 import { TabBarGroup, TimerScreen, MapScreen, ChatScreen, UpdateInterestsScreen } from './components';
+import { useState } from 'react';
 
 const Stack = createStackNavigator();
 
 export default function App() {
+  const [currentSend, setCurrentSend] = useState(null);
+
   return (
     <NavigationContainer>
       <Stack.Navigator 
@@ -21,10 +24,17 @@ export default function App() {
                 headerShown: false
             }}>
             <Stack.Screen name="UpdateInterestsScreen" component={UpdateInterestsScreen} />
-            <Stack.Screen name="TabBarGroup" component={TabBarGroup} />
+            
+            <Stack.Screen name="TabBarGroup">
+              {(props) => <TabBarGroup  {...props} currentSend={currentSend} setCurrentSend={setCurrentSend}/>}
+            </Stack.Screen>
             {/* Below is the Process Funnel (no nav bar) */}
             <Stack.Screen name="TimerScreen" component={TimerScreen} options={{ presentation: 'modal' }}/>
-            <Stack.Screen name="MapScreen" component={MapScreen} />
+            
+            <Stack.Screen name="MapScreen">
+              {(props) => <MapScreen  {...props} currentSend={currentSend} setCurrentSend={setCurrentSend}/>}
+            </Stack.Screen>
+            
             <Stack.Screen name="ChatScreen" component={ChatScreen} />
         </Stack.Navigator>
     </NavigationContainer>

@@ -54,7 +54,7 @@ export default function UpdateInterestsScreen({navigation, route}) {
             /> 
             <View style={styles.doneButton}>
               <WideGreenButton navigation={navigation} title="Done"
-                explicitNavigationFunction={() => navigation.navigate('TabBarGroup', { screen: {DestinationName} })}/>
+                explicitNavigationFunction={() => navigation.navigate('TabBarGroup', { 'screen': {DestinationName} })}/>
             </View>
         </SafeAreaView>
 

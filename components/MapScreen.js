@@ -20,7 +20,7 @@ import BackButtonNoAction from "./BackButtonNoAction";
 import DefaultMapPreview from "./DefaultMapPreview";
 import FriendLocation from "./FriendLocation";
 
-export default function MapScreen({ route, navigation }) {
+export default function MapScreen({ route, navigation, currentSend, setCurrentSend }) {
     const selectedFriendBools = route.params.selectedFriendBools;
     const [mapLoaded, setMapLoaded] = useState(false);
     const [selectedMarkerActivityIndex, setSelectedMarkerActivityIndex] = useState();
@@ -90,7 +90,10 @@ export default function MapScreen({ route, navigation }) {
                         'Are you sure you want to be removed from this Send?',
                         [
                           {text: 'Cancel', onPress: () => {}, style: 'cancel'},
-                          {text: 'Yes', onPress: () => navigation.navigate('TabBarGroup')},// This seems to work! Just brings you to where you came from to get to the map. I think this is good as is.
+                          {text: 'Yes', onPress: () => {
+                            setCurrentSend(null);
+                            navigation.navigate('TabBarGroup');
+                          }},// This seems to work! Just brings you to where you came from to get to the map. I think this is good as is.
                         ],
                         { cancelable: false }
                       )

@@ -1,10 +1,11 @@
 import { StyleSheet, SafeAreaView, View, Text, Button, Dimensions } from "react-native";
 import { fonts } from "../themes/fonts";
 
-export default function HomeScreenOnSend() {
+export default function HomeScreenOnSend({setCurrentSend}) {
     return(
         <SafeAreaView style={styles.container}>
             <Text style={[fonts.title, styles.extraTitleStyling]}>Current Send</Text>
+            <Button title={'complete'} onPress={() => setCurrentSend(null)}/>
         </SafeAreaView>
     );
 }

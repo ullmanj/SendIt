@@ -9,7 +9,7 @@ import PlainCircleIconOptionalTextBelow from "./PlainCircleIconOptionalTextBelow
 import WideGreenButton from "./WideGreenButton";
 import { useNavigation } from "@react-navigation/native";
 
-export default function PendingInvite({ invite }){
+export default function PendingInvite({ invite, setCurrentSend }){
     const navigation = useNavigation();
 
     const renderListItem = ({item}) => {
@@ -44,6 +44,7 @@ export default function PendingInvite({ invite }){
                 </Text>
             </View>
             <WideGreenButton navigation={navigation} title={"Accept"} nextScreen={"MapScreen"} activeColor={'#fff'}
+                additionalOnPress={() => setCurrentSend(invite)}
                 paramsToPassOn={{'minutes': invite.minLeft, 'seconds': invite.secLeft, 'selectedFriendBools': {'selectedFriendBools': invite.selectedFriendBools}}}/>
         </View>
     );
