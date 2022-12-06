@@ -12,7 +12,7 @@ import Animated, {
     useAnimatedRef,
   } from 'react-native-reanimated';
 
-export default function ImageCarousel({data}) {
+export default function ImageCarousel({navigation, data}) {
     const scrollViewRef = useAnimatedRef(null);
     const interval = useRef();
     const [newData] = useState([

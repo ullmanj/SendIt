@@ -20,7 +20,7 @@ export default function SendLogScreen({navigation}) {
     return(
         <SafeAreaView style={styles.container}>
             <Text style={fonts.title}>Your Memories</Text>
-            <ImageCarousel data={PreviousSends}/>
+            <ImageCarousel navigation={navigation} data={PreviousSends}/>
             <Text style={fonts.labels}>Search</Text>
             <Image style={styles.searchBar} source={require('../utils/miscPics/searchBar.png')}/>
             <FlatList
