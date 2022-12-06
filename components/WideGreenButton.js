@@ -4,7 +4,7 @@ import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
 import { constants } from "../themes/constants";
 
-export default function WideGreenButton({ navigation, title, nextScreen, deactivated=false, paramsToPassOn=null, deactivatedPressHandler=null, explicitNavigationFunction=null, activeColor=colors.lightgreen}) {
+export default function WideGreenButton({ navigation, title, nextScreen, deactivated=false, paramsToPassOn=null, deactivatedPressHandler=null, explicitNavigationFunction=null, activeColor=colors.lightgreen, additionalOnPress=null}) {
     const styles = StyleSheet.create({
         buttonContainer: {
             // width: Dimensions.get('window').width * .85,
@@ -24,6 +24,10 @@ export default function WideGreenButton({ navigation, title, nextScreen, deactiv
         <View style={styles.buttonContainer}>
             <TouchableOpacity onPress={() => {
                     if(!deactivated) {
+                        if (additionalOnPress !== null) {
+                            additionalOnPress();
+                        }
+                        
                         if (explicitNavigationFunction !== null) {
                             explicitNavigationFunction();
                         } else {
