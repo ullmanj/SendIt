@@ -93,7 +93,7 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                           {text: 'Yes', onPress: () => {
                             setCurrentSend(null);
                             navigation.navigate('TabBarGroup');
-                          }},// This seems to work! Just brings you to where you came from to get to the map. I think this is good as is.
+                          }},// This seems to work. Just brings you to where you came from to get to the map. I think this is good as is.
                         ],
                         { cancelable: false }
                       )

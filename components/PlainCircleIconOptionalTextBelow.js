@@ -5,13 +5,13 @@ import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
 import { shapes } from '../themes/shapes'
 
-export default function PlainCircleIconOptionalTextBelow({ image, subtitle=null, widthFactor=0.22, heightFactor=0.22 }) {
+export default function PlainCircleIconOptionalTextBelow({ image, subtitle=null, widthFactor=0.22, heightFactor=0.22, additionalStyle=null, usePadding=true}) {
     return(
-        <View style={styles.container}>
+        <View style={[styles.container, additionalStyle]}>
             <Image
                 source={image} 
                 resizeMode="cover" 
-                style={{...shapes.circle, width: Dimensions.get('window').width * widthFactor, height: Dimensions.get('window').width * heightFactor}}
+                style={[usePadding ? {...shapes.circle} : {borderRadius: '100%'}, {width: Dimensions.get('window').width * widthFactor, height: Dimensions.get('window').width * heightFactor}]}
             />
             { subtitle !== null && <Text numberOfLines={1} style={styles.title}>{subtitle}</Text> }
         </View>
