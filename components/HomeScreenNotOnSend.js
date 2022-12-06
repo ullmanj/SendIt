@@ -46,11 +46,7 @@ const styles = StyleSheet.create({
         marginBottom: Dimensions.get('window').height * 0.025
     },
     toggleContainer: {
-        // flex: 1,
-        // justifyContent: 'center',
         alignItems: 'center',
-        // borderColor: 'green',
-        // borderWidth: 10,
     },
     toggleTitle: {
         fontSize: fonts.mediumFontSize,

@@ -161,9 +161,7 @@ const styles = StyleSheet.create({
     completeText: {
         width: Dimensions.get('window').width * 0.71, // same width factor as text and chat button in the send container.
         fontSize: fonts.smallFontSize,
-        textAlign: 'center'
-        // fontWeight: '300'
-        // color: colors.darkgray
+        textAlign: 'center',
     },
     buttonBlock: {
         justifyContent: 'center',

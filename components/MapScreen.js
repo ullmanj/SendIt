@@ -44,7 +44,7 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
 
                 onMarkerPress={(event) => {
                     const index = event.nativeEvent.id;
-                    if (index < 100) {  // make sure you pressed an activity, not a (100's level) friend
+                    if (index < 100) {  // make sure user pressed an activity, not a (100's level) friend
                         setSelectedMarkerActivityIndex(index);
                     }
                 }}
@@ -92,7 +92,7 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                         [
                           {text: 'Cancel', onPress: () => {}, style: 'cancel'},
                           {text: 'Yes', onPress: () => {
-                            /* don't need to do anything here with setting current send*/
+                            /* don't need to do anything here with setCurrentsend*/
                             navigation.navigate('TabBarGroup');
                           }},// This seems to work. Just brings you to where you came from to get to the map. I think this is good as is.
                         ],
