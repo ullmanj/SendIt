@@ -16,7 +16,7 @@ export default function ChatScreen({ navigation, route }) {
     const [messages, setMessages] = useState([
           {
             _id: 3,
-            text: 'Guys, no words can describe how hyped I am right now. I\'ve been wanting to do this activity for so long!',
+            text: 'I am so hyped! I\'ve been wanting to do this activity for so long!',
             createdAt: new Date().getTime(),
             user: {
                 _id: 3,
@@ -26,9 +26,9 @@ export default function ChatScreen({ navigation, route }) {
         },
         {
             _id: 1,
-            text: 'Ready to Send It?! \n\nYou’re all headed to ' + activity.name + ' located at 459 University Avenue' +
+            text: 'Ready to Send It?! \n\nBased on the results of the voting, you’re all headed to ' + activity.name + ' located at 459 University Avenue' +
             '. This location is open from ' + activity.hours + ', and the price range is ' + activity.price +
-            '.\n\nFeel free to use this chat to coordinate with your group. Although I’m a bot, '+
+            '.\n\nFeel free to use this chat to coordinate with your group and share photos. Although I’m a bot, '+
             'I cannot wait to see all the new memories you’re about to create!',
             createdAt: new Date().getTime(),
             user: {

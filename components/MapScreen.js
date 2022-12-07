@@ -29,6 +29,16 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
     const [voteIndex, setVoteIndex] = useState(-1);
     let timeLeft = parseInt(route.params.minutes) * 60 + parseInt(route.params.seconds);
     const yourLocation = [37.420112, -122.185346]
+    const [numVotesReceived, setNumVotesReceived] = useState(() => {
+        let count = 0
+        Friends.map((friend, index) => {
+            if (selectedFriendBools.selectedFriendBools[index]) {
+                count++;
+            }
+        })
+        return count
+    })
+    const [numTotalVotes, setNumTotalVotes] = useState(numVotesReceived + 1)
     return(
         <SafeAreaView style={styles.mapContainer}> 
             <MapView
@@ -134,6 +144,12 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                             ],
                             { cancelable: false }
                           )
+                    } else {
+                        navigation.navigate('ChatScreen', { 
+                            'activity' : MapActivities[voteIndex],
+                            'backScreen' : backScreen,
+                            'backStack' : backStack
+                        })
                     }
                 }}>
                     <ChatButtonNoAction />
@@ -163,7 +179,7 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                         timeToShow={['M', 'S']}
                         timeLabels={{m: '', s: ''}}
                     />
-                    <Text style={{alignSelf: 'center', marginBottom: 20, fontSize: fonts.smallFontSize}}>4/5 people voted</Text>
+                    <Text style={{alignSelf: 'center', marginBottom: 20, fontSize: fonts.mediumFontSize}}>{numVotesReceived}/{numTotalVotes} votes received</Text>
                 </View>
                 
                 { selectedMarkerActivityIndex === undefined &&
@@ -171,7 +187,7 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                 }
                 { selectedMarkerActivityIndex !== undefined &&
                     <MapActivityPreview activity={MapActivities[selectedMarkerActivityIndex]}
-                        voteHandler={() => setVoteIndex(selectedMarkerActivityIndex)}
+                        voteHandler={() => { setVoteIndex(selectedMarkerActivityIndex); setNumVotesReceived(numTotalVotes); }}
                         voteIsCast={voteIndex !== -1}
                         isVotedFor={selectedMarkerActivityIndex === voteIndex}/>
                 }
