@@ -1,4 +1,6 @@
 // sorry for poor file naming lol, this is for the carousel in the SendInfocreen
+// needed a different carousel here because the data it takes in has a different format
+// (in the interest of time it was faster to make a new file like this, if we have time at the end we can find a way to join ImageCarousel and ImageCarousel2)
 import { SafeAreaView, View, Text, Dimensions, Pressable, useWindowDimensions, Image } from "react-native";
 import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
@@ -69,18 +71,10 @@ export default function ImageCarousel2({data}) {
             return (
                 <View key={index}>
                     <Animated.View style={[style]}>
-                      <Pressable onPress={() => {
-                          navigation.navigate('LogStack', {
-                            screen: 'SendInfoScreen',
-                            params: { activity: item },
-                        })
-                      }}>
                         <View style={{flexDirection: 'column'}}>
-                          <Image style={{width: SIZE, height: SIZE, aspectRatio: 1, borderRadius: 20, marginBottom: 10}}
-                            source={item.photos[index]}/>
-                          <Text style={{fontSize: fonts.mediumFontSize, textAlign: 'center'}}>{item.name}</Text>
+                          <Image style={{width: SIZE, height: SIZE, aspectRatio: 1, borderRadius: 20}}
+                            source={data[index - 1]}/>
                         </View>
-                      </Pressable>
                     </Animated.View>
                 </View>
             );

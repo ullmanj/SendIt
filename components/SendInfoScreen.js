@@ -27,7 +27,7 @@ export default function SendInfoScreen({ navigation, route }) {
             <ScrollView 
                 style={{width: Dimensions.get('screen').width}}>
             <Text style={fonts.labels}>Participants</Text>
-            <View style={{marginLeft: Dimensions.get('window').width * 0.04}}>
+            <View style={{marginLeft: Dimensions.get('window').width * 0.04, marginBottom: Dimensions.get('window').height * 0.04}}>
                 <FlatList
                     data={activity.participants}
                     numColumns={3}
@@ -37,9 +37,7 @@ export default function SendInfoScreen({ navigation, route }) {
                 />
             </View>
             <Text style={fonts.labels}>Photos</Text>
-            {/* TODO make this image carousel */}
-            <Image source={activity.photos[0]} style={{width: 150, height: 150, alignSelf: 'center'}}/> 
-            {/* <ImageCarousel2 data={activity.photos}/> */}
+            <ImageCarousel2 data={activity.photos}/>
             <Text style={fonts.labels}>Details</Text>
             <View style={styles.detailsContainer}>
                 <View style={styles.detailsRow}>
