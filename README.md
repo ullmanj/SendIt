@@ -15,6 +15,7 @@ Circle icon
 
 UPDATE INTERESTS
 - Clicking done on update interests should bring you back to where you just were
+- consider having some interests pre-selected
 
 ERRORS
 - fix all of red errors with flatlists and such
@@ -26,8 +27,7 @@ CHAT SCREEN
 - [DONE] make width of chat boxes a little less
 - [DONE] figure out why top has a white header ?
 - [If time] add icon so they can see people in the send 
-- make it so the user who is sending the sends doesn't have an icon or has a basic icon
-- make Send It icon the same size as Jamie's
+- [DONE] make Send It icon the same size as Jamie's
 
 SEND LOG
 - [DONE] make whole page scrollable

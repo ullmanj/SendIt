@@ -1,11 +1,11 @@
-import { StyleSheet, SafeAreaView, View, Text, Dimensions } from "react-native";
+import { StyleSheet, SafeAreaView, Alert, Pressable, View, TouchableOpacity, Text, Dimensions, Image} from "react-native";
 import { GiftedChat, Bubble, Actions } from "react-native-gifted-chat"
 import React, { useState } from 'react';
 import { colors } from "../themes/colors";
 import ChatHeader from "./ChatHeader"
 import { Icon } from 'react-native-elements'
-// import * as ImagePicker from 'expo-image-picker'; 
-import * as ImagePicker from "react-native-image-picker"
+import * as ImagePicker from 'expo-image-picker'; 
+// import * as ImagePicker from "react-native-image-picker"
 import { Octicons } from '@expo/vector-icons';
 
 export default function ChatScreen({ navigation, route }) {
@@ -14,6 +14,16 @@ export default function ChatScreen({ navigation, route }) {
     const backStack  = route.params?.backStack != null ? route.params.backStack : 'HomeStack' 
     // const participants = route.params.participants
     const [messages, setMessages] = useState([
+          {
+            _id: 2,
+            text: 'Me too!! How should we get there? I was thinking we could carpool - I can drive!',
+            createdAt: new Date(),
+            user: {
+              _id: 2,
+              name: 'Rachel', 
+              avatar: require('../utils/profilePics/rachel_profilePic.png'),
+            },
+          },
           {
             _id: 3,
             text: 'I am so hyped! I\'ve been wanting to do this activity for so long!',
@@ -40,7 +50,7 @@ export default function ChatScreen({ navigation, route }) {
     ]);
 
     function handleSend(newMessage = []) {
-        console.log(newMessage)
+        console.log("new message: ", newMessage)
         setMessages(GiftedChat.append(messages, newMessage));
     }
 
@@ -48,7 +58,7 @@ export default function ChatScreen({ navigation, route }) {
           return (
             <View>
               <Text style={
-                props.currentMessage.user.name == "Send It!" ? {...styles.chatName, fontWeight: '700'} : styles.chatName
+                props.currentMessage.user.name == "Send It!" ? {...styles.chatName, fontWeight: '700', color: colors.darkpink} : styles.chatName
               }>{props.currentMessage.user.name}</Text>
               <Bubble
                 {...props}
@@ -72,103 +82,46 @@ export default function ChatScreen({ navigation, route }) {
           );
     }
 
-    // NOTE ignor all of this code for now. couldn't figure out how to actually upload a photo to the chat -> will come back to it later
-    // async function handlePickImage() {
-    //   // No permissions request is necessary for launching the image library
-    //   let result = await ImagePicker.launchImageLibraryAsync({
-    //       mediaTypes: ImagePicker.MediaTypeOptions.All,
-    //       allowsEditing: true,
-    //       aspect: [4, 3],
-    //       quality: 1,
-    //   });
+    const handlePickImage = async () => {
+      let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          allowsEditing: true,
+          aspect: [4, 3],
+          quality: 1,
+      });
+      
+      console.log(result)
+      if (result.canceled) {
+        return
+      }          
 
-    //   return result
-    // };
-
-    function handleAddPicture() {
-      // const { user } = data; // wherever you user data is stored;
-      // const options = {
-      //   title: "Select Profile Pic",
-      //   mediaType: "photo",
-      //   takePhotoButtonTitle: "Take a Photo",
-      //   maxWidth: 256,
-      //   maxHeight: 256,
-      //   allowsEditing: true,
-      //   noData: true
-      // };
-      ImagePicker.launchCamera(response => {
-        console.log("Response = ", response);
-        if (response.didCancel) {
-          return
-        } else if (response.error) {
-          // alert error
-        } else {
-          const { uri } = response;
-          const extensionIndex = uri.lastIndexOf(".");
-          const extension = uri.slice(extensionIndex + 1);
-          const allowedExtensions = ["jpg", "jpeg", "png"];
-          const correspondingMime = ["image/jpeg", "image/jpeg", "image/png"];
-          const options = {
-            keyPrefix: "****",
-            bucket: "****",
-            region: "****",
-            accessKey: "****",
-            secretKey: "****"
-          };
-          const file = {
-            uri,
-            name: `${this.messageIdGenerator()}.${extension}`,
-            type: correspondingMime[allowedExtensions.indexOf(extension)]
-          };
-          RNS3.put(file, options)
-         .progress(event => {
-           console.log(`percent: ${event.percent}`);
-         })
-         .then(response => {
-           console.log(response, "response from rns3");
-           if (response.status !== 201) {
-             alert(
-             "Something went wrong. The image was not uploaded"
-             );
-             console.error(response.body);
-             return;
-           }
-           const message = {};
-           id = this.messageIdGenerator();
-           message._id = id;
-           message.createdAt = Date.now();
-           message.user = {
-             _id: id,
-             name: "You",
-            //  avatar: require('../utils/interestsPics/')
-           };
-           message.image = response.headers.Location;
-           message.messageType = "image";
-          //  this.chatsFromFB.update({
-          //    messages: [message, ...this.state.messages]
-          //  });
-
-          //  handleSend(message);
-         });
-         if (!allowedExtensions.includes(extension)) {
-           return alert("That file type is not allowed.");
-         }
-       }
-    });
+      let newMessage = {
+        _id: 50,
+        createdAt: new Date(),
+        user: {},
+        image: result.assets[0].uri
+      }
+      handleSend(newMessage)
+      return    
     };
 
-    function renderActions(props) {
+    function renderActions() {
       return (
-        <Actions
-          {...props}
-          options={{
-            ['Select a photo']: handleAddPicture,
-          }}
-          icon={() => (
-             <Octicons name='device-camera' size={40} width={50} color={colors.darkgreen} />          
-          )}
-          onSend={args => console.log("ONSEND IN RENDERACTIONS") }
-        />
+        <Pressable onPress={() => {  // Back button renders regardless of map rendering status
+          Alert.alert(
+              'Send an Image',
+              "Images you send in the chat will appear in the Send Log once the send is completed! You can also attach photos after the send is completed.",
+              [
+                {text: 'Cancel', onPress: () => {}, style: 'cancel'},
+                {text: 'Select from camera roll', onPress: () => {
+                  handlePickImage()
+                }},
+              ],
+              { cancelable: false }
+            )
+      }}>
+          <Octicons color={colors.darkgreen} name="device-camera" size={40}/>
+        </Pressable>
       )
     }
 
@@ -178,9 +131,8 @@ export default function ChatScreen({ navigation, route }) {
             messages={messages}
             onSend={newMessage => { handleSend(newMessage)} }
             placeholder='Write a message here...'
-            // showUserAvatar
             renderBubble={renderBubble}
-            // renderActions={renderActions}
+            renderActions={renderActions}
           />
           <ChatHeader navigation={navigation} activity={route.params.activity} backScreen={backScreen} backStack={backStack}/>
         </View>
@@ -199,5 +151,5 @@ const styles = StyleSheet.create({
         color: colors.darkgreen,
         marginLeft: 10,
         fontWeight: '500'
-    }
+    },
   });

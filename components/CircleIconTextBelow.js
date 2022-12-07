@@ -52,5 +52,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         paddingVertical: 2,
         fontWeight: '400',
+        width: Dimensions.get('screen').width * 0.3, // this is because long titles mess with the formatting...
     },
   });
