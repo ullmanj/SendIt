@@ -1,7 +1,6 @@
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
 import HomeScreen from './HomeScreen';
-// import PendingInvitesScreen from './PendingInvitesScreen';
 
 export default function HomeStack({currentSend, setCurrentSend}) {
     const Stack = createStackNavigator();
@@ -11,8 +10,6 @@ export default function HomeStack({currentSend, setCurrentSend}) {
             screenOptions={{
                 headerShown: false
             }}>
-            {/* this stack defaults to open the select interests screen for now (just so we can see what that screen looks like)
-                in the future we'll probs want it to default to show the home screen */}
             <Stack.Screen name="HomeScreen">
                 {(props) => <HomeScreen  {...props} currentSend={currentSend} setCurrentSend={setCurrentSend}/>}
             </Stack.Screen>

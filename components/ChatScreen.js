@@ -10,14 +10,17 @@ import { Octicons } from '@expo/vector-icons';
 
 export default function ChatScreen({ navigation, route }) {
     const activity = route.params.activity
+    const backScreen  = route.params?.backScreen != null ? route.params.backScreen : 'HomeScreen' 
+    const backStack  = route.params?.backStack != null ? route.params.backStack : 'HomeStack' 
+    // const participants = route.params.participants
     const [messages, setMessages] = useState([
-        {
+          {
             _id: 3,
             text: 'Guys, no words can describe how hyped I am right now. I\'ve been wanting to do this activity for so long!',
             createdAt: new Date().getTime(),
             user: {
                 _id: 3,
-                name: 'James Landay', // TODO change to name of one of the people in the send if you have time 
+                name: 'Jamie', // TODO change to name of one of the people in the send if you have time 
                 avatar: require('../utils/profilePics/jamie_profilePic.png'), // TODO update to right photo
             },
         },
@@ -34,7 +37,6 @@ export default function ChatScreen({ navigation, route }) {
                 avatar: require('../utils/miscPics/sendItLogo.png'), // todo maek this larger
             },
         },
-    
     ]);
 
     function handleSend(newMessage = []) {
@@ -53,14 +55,16 @@ export default function ChatScreen({ navigation, route }) {
                 wrapperStyle={{
                     left: {
                         backgroundColor: colors.lightgray,
+                        width: Dimensions.get('screen').width * 0.7
                     },
                     right: {
-                        backgroundColor: colors.darkgreen
+                        backgroundColor: colors.darkgreen,
+                        maxWidth: Dimensions.get('screen').width * 0.7
                     }
                 }}
                 textStyle={{
                   right: {
-                      color: '#fff'
+                      color: '#FFFFFF'
                   }
                 }}
               />
@@ -174,11 +178,11 @@ export default function ChatScreen({ navigation, route }) {
             messages={messages}
             onSend={newMessage => { handleSend(newMessage)} }
             placeholder='Write a message here...'
-            showUserAvatar
+            // showUserAvatar
             renderBubble={renderBubble}
             // renderActions={renderActions}
           />
-          <ChatHeader navigation={navigation} activity={route.params.activity} backScreen={route.params.backScreen} backStack={route.params.backStack}/>
+          <ChatHeader navigation={navigation} activity={route.params.activity} backScreen={backScreen} backStack={backStack}/>
         </View>
     );
 }

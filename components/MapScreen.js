@@ -143,8 +143,8 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
             <View style={styles.overlay} pointerEvents={'box-none'}>
                 <View style={styles.headerBlurb}>
                     <CountDown
-                        // until={timeLeft} // this is how long (in seconds) the timer will be set for
-                        until={5} // uncomment this line (and comment the line before) if you want the timer to go quickly when you are testing/coding
+                        until={timeLeft} // this is how long (in seconds) the timer will be set for
+                        // until={5} // uncomment this line (and comment the line before) if you want the timer to go quickly when you are testing/coding
                         size={30}
                         onFinish={() => {
                             let activity = MapActivities[0] 
@@ -163,6 +163,7 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                         timeToShow={['M', 'S']}
                         timeLabels={{m: '', s: ''}}
                     />
+                    <Text style={{alignSelf: 'center', marginBottom: 20, fontSize: fonts.smallFontSize}}>4/5 people voted</Text>
                 </View>
                 
                 { selectedMarkerActivityIndex === undefined &&
@@ -202,8 +203,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffffcc',
         borderRadius: constants.borderRadius,
         paddingHorizontal: 10,
-        
-        // paddingVertical: 20,
         // paddingBottom: 20,
     },
   });
