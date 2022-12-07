@@ -11,13 +11,14 @@ import HomeStack from './HomeStack';
 import SendStack from './SendStack';
 import LogStack from './LogStack';
 import { colors } from '../themes/colors'
+import Tabbar from "./Tabbar"
 
 const Tab = createBottomTabNavigator();
 
 export default function TabBarGroup({currentSend, setCurrentSend}) {
   return (
       // I know we're gonna update this tab later, but I adjusted the size to take up more of the screen to reflect the size of the tab in the figma
-      <Tab.Navigator screenOptions={({ route }) => ({  // Adapted from cs47-lecture5b-demo
+      <Tab.Navigator /*screenOptions={({ route }) => ({  // Adapted from cs47-lecture5b-demo
           tabBarIcon: ({ focused, color, size }) => {
             // let iconName;
             let icon;
@@ -42,7 +43,8 @@ export default function TabBarGroup({currentSend, setCurrentSend}) {
             height: 100
           },
           tabBarShowLabel: false
-        })}
+        })}*/
+        tabBar={props => <View style={{backgroundColor: '#fff'}}><Tabbar {...props}/></View>}
         >
 
         <Tab.Screen name="HomeStack">
