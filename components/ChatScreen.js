@@ -96,9 +96,11 @@ export default function ChatScreen({ navigation, route }) {
       }          
 
       let newMessage = {
-        _id: 50,
+        _id: 20,
         createdAt: new Date(),
-        user: {},
+        user: {
+          _id: 20,
+        },
         image: result.assets[0].uri
       }
       handleSend(newMessage)
@@ -133,6 +135,9 @@ export default function ChatScreen({ navigation, route }) {
             placeholder='Write a message here...'
             renderBubble={renderBubble}
             renderActions={renderActions}
+            user={{
+              _id: 20,
+            }}
           />
           <ChatHeader navigation={navigation} activity={route.params.activity} backScreen={backScreen} backStack={backStack}/>
         </View>

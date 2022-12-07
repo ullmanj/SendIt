@@ -1,5 +1,6 @@
 HOME SCREEN
 - add "loading" screen that leads to update interests
+- [if time] add some sort of plane animation to the home screen
 
 MAP SCREEN
 - [DONE] when timer runs out, make it automatically navigate to the chat screen
@@ -22,8 +23,8 @@ ERRORS
 
 CHAT SCREEN
 - [DONE] fix back button (urgent!)
-- [IF TIME] working camera button
-- make the person sending the text have an icon
+- [DONE] [IF TIME] working camera button
+- [DONE] make the person sending the text have no icon
 - [DONE] make width of chat boxes a little less
 - [DONE] figure out why top has a white header ?
 - [If time] add icon so they can see people in the send 

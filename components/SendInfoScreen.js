@@ -59,7 +59,7 @@ export default function SendInfoScreen({ navigation, route }) {
                     <View style={{marginLeft:2}}>
                         <FontAwesome name="dollar" color={'black'} size={30}/>
                     </View>
-                    <View style={{marginLeft: 17}}>
+                    <View style={{marginLeft: Dimensions.get('window').width * 0.06}}>
                         <MoneySigns moneySigns="$$" fontSize={20} fontWeight={"default"}/>
                     </View>
                 </View>
