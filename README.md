@@ -22,7 +22,7 @@ ERRORS
 
 CHAT SCREEN
 - [DONE] fix back button (urgent!)
-- [IF TIME] camera button
+- [IF TIME] working camera button
 - make the person sending the text have an icon
 - make width of chat boxes a little less
 - [DONE] figure out why top has a white header ?
@@ -30,7 +30,7 @@ CHAT SCREEN
 - [if time] see if we need participants icon
 
 SEND LOG
-- make whole page scrollable
+- [DONE] make whole page scrollable
 
 SEND INFO
 - add image carousel
