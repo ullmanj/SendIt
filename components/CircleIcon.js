@@ -6,8 +6,12 @@ import { fonts } from '../themes/fonts'
 import { colors } from '../themes/colors'
 import { shapes } from '../themes/shapes'
 
-export default function CircleIcon({ image, title, widthFactor=0.22, heightFactor=0.22 }) {
-    const [borderColor, setBorderColor] = useState(false)
+export default function CircleIcon({ image, title, widthFactor=0.22, heightFactor=0.22, preselected=false }) {
+    const [borderColor, setBorderColor] = useState(() => {
+        if (preselected) {
+            return true;
+        } return false;
+    })
 
     function changeBorderColor() {
         if (borderColor == true) {

@@ -35,8 +35,14 @@ export default function UpdateInterestsScreen({navigation, route}) {
     }
   
     renderListItem = ({ item }) => {
+        // making some items pre-selected so it seems like a user is returning to the app
+        let preselected = false;
+        if (item.name == "Concerts" || item.name == "Sweet" || item.name == "Hiking" || item.name == "Yoga" ||
+          item.name == "Museums"|| item.name == "Musicals") {
+          preselected = true
+        }
         return (
-            <CircleIcon title={item.name} image={item.image}/>
+            <CircleIcon title={item.name} image={item.image} preselected={preselected}/>
         )
     }
   

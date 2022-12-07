@@ -16,7 +16,7 @@ Circle icon
 
 UPDATE INTERESTS
 - Clicking done on update interests should bring you back to where you just were
-- consider having some interests pre-selected
+- [DONE] consider having some interests pre-selected
 
 ERRORS
 - fix all of red errors with flatlists and such
