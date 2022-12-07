@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Dimensions } from "react-native";
+import { StyleSheet, SafeAreaView, View, Text, Dimensions } from "react-native";
 import { GiftedChat, Bubble, Actions } from "react-native-gifted-chat"
 import React, { useState } from 'react';
 import { colors } from "../themes/colors";
@@ -170,7 +170,6 @@ export default function ChatScreen({ navigation, route }) {
 
     return (
         <View style={styles.container}>
-          <ChatHeader navigation={navigation} activity={route.params.activity} backScreen={route.params.backScreen}/>
           <GiftedChat
             messages={messages}
             onSend={newMessage => { handleSend(newMessage)} }
@@ -179,16 +178,17 @@ export default function ChatScreen({ navigation, route }) {
             renderBubble={renderBubble}
             // renderActions={renderActions}
           />
+          <ChatHeader navigation={navigation} activity={route.params.activity} backScreen={route.params.backScreen} backStack={route.params.backStack}/>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     chatName: {
         fontSize: 15,

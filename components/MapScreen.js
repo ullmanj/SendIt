@@ -15,19 +15,20 @@ import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { constants } from "../themes/constants";
-import BackButtonNoAction from "./BackButtonNoAction";
-// import MapVotedMenu from "./MapVotedMenu";
+import ExitSendButtonNoAction from "./ExitSendButtonNoAction";
 import DefaultMapPreview from "./DefaultMapPreview";
 import FriendLocation from "./FriendLocation";
-import PreviousSends from "../utils/PreviousSends";
+import ChatButtonNoAction from "./ChatButtonNoAction"
 
 export default function MapScreen({ route, navigation, currentSend, setCurrentSend }) {
     const selectedFriendBools = route.params.selectedFriendBools;
+    const backScreen = route.params.backScreen
+    const backStack = route.params.backStack
     const [mapLoaded, setMapLoaded] = useState(false);
     const [selectedMarkerActivityIndex, setSelectedMarkerActivityIndex] = useState();
     const [voteIndex, setVoteIndex] = useState(-1);
     let timeLeft = parseInt(route.params.minutes) * 60 + parseInt(route.params.seconds);
-
+    const yourLocation = [37.420112, -122.185346]
     return(
         <SafeAreaView style={styles.mapContainer}> 
             <MapView
@@ -67,6 +68,15 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                     )
                 })}
 
+                {/* adding your location to the map */}
+                <View>
+                    <Marker
+                        coordinate={{latitude: yourLocation[0], longitude: yourLocation[1]}}
+                    >
+                        <FriendLocation name={"You"}/>
+                    </Marker>
+                </View>
+
                 {Friends.map((friend, index) => {
                     if (!selectedFriendBools.selectedFriendBools[index]) {
                         return
@@ -99,25 +109,60 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                         { cancelable: false }
                       )
                 }}>
-                    <BackButtonNoAction />
+                    <ExitSendButtonNoAction />
+            </Pressable>
+
+            <Pressable style={constants.chatButtonStyle} onPress={() => {  // Back button renders regardless of map rendering status
+                    if (voteIndex == -1) {
+                        Alert.alert(
+                            'Proceed Without Voting',
+                            'Are you sure you want to proceed to the chat before voting on a send?',
+                            [
+                              {text: 'Cancel', onPress: () => {}, style: 'cancel'},
+                              {text: 'Yes', onPress: () => {
+                                let activity = MapActivities[0] 
+                                if (voteIndex != -1) {
+                                    activity = MapActivities[voteIndex]
+                                }
+                                setCurrentSend(activity); // TODO see if u need this line
+                                navigation.navigate('ChatScreen', { 
+                                    'activity' : activity,
+                                    'backScreen' : backScreen,
+                                    'backStack' : backStack
+                                })
+                              }},
+                            ],
+                            { cancelable: false }
+                          )
+                    }
+                }}>
+                    <ChatButtonNoAction />
             </Pressable>
             
             { mapLoaded === true &&  // pointerEvents box-none means that the touches are passed through the empty space to the map so you can still use the map with the overlay on top.
             <View style={styles.overlay} pointerEvents={'box-none'}>
                 <View style={styles.headerBlurb}>
                     <CountDown
-                        until={timeLeft} // this is how long (in seconds) the timer will be set for
-                        // until={20} // uncomment this line (and comment the line before) if you want the timer to go quickly when you are testing/coding
+                        // until={timeLeft} // this is how long (in seconds) the timer will be set for
+                        until={5} // uncomment this line (and comment the line before) if you want the timer to go quickly when you are testing/coding
                         size={30}
-                        onFinish={() => alert('Finished')} // TODO we will need to update this to take the user to the next page depending on what was voted on the most
+                        onFinish={() => {
+                            let activity = MapActivities[0] 
+                            if (voteIndex != -1) {
+                                activity = MapActivities[voteIndex]
+                            }
+                            navigation.navigate('ChatScreen', { 
+                                'activity' : activity,
+                                'backScreen' : backScreen,
+                                'backStack' : backStack
+                            })
+                        } }
                         digitStyle={{backgroundColor: undefined}}
                         showSeparator
                         separatorStyle={{color: colors.darkgray}}
-                        // digitTxtStyle={{color: colors.darkgray}}  // won't do anything because I editted the coutdown file itself.
                         timeToShow={['M', 'S']}
                         timeLabels={{m: '', s: ''}}
                     />
-                    <Button title="Go to chat" onPress={() => setCurrentSend(selectedMarkerActivityIndex === undefined ? MapActivities[0] /*default 'chose one at random'*/ : MapActivities[selectedMarkerActivityIndex])}/>
                 </View>
                 
                 { selectedMarkerActivityIndex === undefined &&

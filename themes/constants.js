@@ -11,4 +11,12 @@ export const constants = {
         backgroundColor: '#fff',
         borderRadius: '100%',
     },
+    chatButtonStyle: {
+        position: 'absolute',
+        top: 60,
+        right: 30,
+        // fill in the arrow
+        backgroundColor: '#fff',
+        borderRadius: '100%',
+    },
 };

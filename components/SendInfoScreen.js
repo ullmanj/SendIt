@@ -67,7 +67,7 @@ export default function SendInfoScreen({ navigation, route }) {
                 </View>
             </View>
             <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                <GreenButton title="View Chat" navigation={navigation} nextScreen="ChatScreen" paramsToPassOn={{'activity': activity}}/>
+                <GreenButton title="View Chat" navigation={navigation} nextScreen="ChatScreen" paramsToPassOn={{'activity': activity, 'backScreen': 'SendLogScreen', 'backStack': 'LogStack'}}/>
                 <Octicons name="device-camera" color={colors.darkgreen} size={60} style={{marginLeft: 40}}/>
             </View>
             </ScrollView>

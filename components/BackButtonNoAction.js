@@ -1,8 +1,8 @@
-import { Image } from "react-native";
+import { Image, Dimensions } from "react-native";
 
 
-export default function BackButton({position='absolute'}) {
+export default function ChatButtonNoAction({position='absolute'}) {
     return(
-        <Image style={{width: 40, height: 40, position: {position}}} source={require('../utils/miscPics/backButton.png')} />
+        <Image style={{width: Dimensions.get('screen').width * 0.13, height: Dimensions.get('screen').width * 0.13, position: {position}}} source={require('../utils/miscPics/backButton.png')} />
     );
 }

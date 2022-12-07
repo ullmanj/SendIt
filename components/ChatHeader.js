@@ -10,10 +10,10 @@ import BackButtonNoAction from "./BackButtonNoAction"
 import { constants } from "../themes/constants";
 
 export default function ChatHeader(props) {
-    const { navigation, activity, backScreen } = props
+    const { navigation, activity, backScreen, backStack } = props
     return(
         <SafeAreaView style={styles.container}>
-            <Pressable style={constants.backButtonStyle} onPress={() => {navigation.goBack()}}> 
+            <Pressable style={constants.backButtonStyle} onPress={() => navigation.navigate(backStack, { 'screen': backScreen })}>
                 <BackButtonNoAction position="relative"/>
             </Pressable>
             <View style={styles.centerText}>
@@ -33,10 +33,14 @@ const styles = StyleSheet.create({
         borderBottomColor: colors.lightgray,
         borderBottomWidth: 2,
         width: Dimensions.get('screen').width,
+        position: 'absolute',
+        backgroundColor: '#FFFFFF',
+        top: 0,
+        left: 0
     },
     centerText: {
         flexDirection: 'row', 
-        marginLeft: Dimensions.get('window').width * .17, 
+        marginLeft: Dimensions.get('window').width * .19, 
         marginBottom: 10
     }
   });
