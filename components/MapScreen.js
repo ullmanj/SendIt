@@ -92,7 +92,7 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                         [
                           {text: 'Cancel', onPress: () => {}, style: 'cancel'},
                           {text: 'Yes', onPress: () => {
-                            /* don't need to do anything here with setCurrentsend*/
+                            /* don't need to do anything here with setCurrentSend*/
                             navigation.navigate('TabBarGroup');
                           }},// This seems to work. Just brings you to where you came from to get to the map. I think this is good as is.
                         ],
