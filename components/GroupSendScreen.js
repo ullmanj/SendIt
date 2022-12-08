@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: Dimensions.get('window').width * 0.09,
         //marginRight: Dimensions.get('window').width * 0.09,
         //marginBottom: 0,
+        paddingBottom: 5,
     },
     updateInterestText: {
         fontSize: fonts.mediumFontSize,

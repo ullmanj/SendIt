@@ -20,12 +20,12 @@ export default function SendLogScreen({navigation}) {
 
     return(
         <SafeAreaView style={styles.container}>
-            <Text style={fonts.title}>Your Memories</Text>
             <ScrollView style={{width: Dimensions.get('screen').width}}>
+                <Text style={fonts.title}>Your Memories</Text>{/* I moved this inside */}
                 <ImageCarousel navigation={navigation} data={PreviousSends}/>
                 <Text style={fonts.labels}>Search</Text>
                 <Image style={styles.searchBar} source={require('../utils/miscPics/searchBar.png')}/>
-                <View style={{marginLeft: Dimensions.get('window').width * 0.04}}>
+                <View style={{marginLeft: Dimensions.get('window').width * 0.04, paddingBottom: 20}}>
                     <FlatList
                         data={PreviousSends}
                         numColumns={3}

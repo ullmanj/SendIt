@@ -16,7 +16,7 @@ export default function TabBarGroup({currentSend, setCurrentSend}) {
           headerShown: false,
           tabBarShowLabel: false
         })}
-        tabBar={props => <View style={{backgroundColor: '#fff'}}><Tabbar {...props}/></View>}
+        tabBar={props => <View style={{backgroundColor: '#fff', paddingTop: 0 /*change to add more whitespace above tab bar*/}}><Tabbar {...props}/></View>}
         >
 
         <Tab.Screen name="HomeStack">
