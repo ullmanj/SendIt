@@ -18,32 +18,32 @@ const Tab = createBottomTabNavigator();
 export default function TabBarGroup({currentSend, setCurrentSend}) {
   return (
       // I know we're gonna update this tab later, but I adjusted the size to take up more of the screen to reflect the size of the tab in the figma
-      <Tab.Navigator /*screenOptions={({ route }) => ({  // Adapted from cs47-lecture5b-demo
-          tabBarIcon: ({ focused, color, size }) => {
-            // let iconName;
-            let icon;
+      <Tab.Navigator screenOptions={({ route }) => ({  // Adapted from cs47-lecture5b-demo
+          // tabBarIcon: ({ focused, color, size }) => {
+          //   // let iconName;
+          //   let icon;
 
-            if (route.name === 'HomeStack') {
-              // iconName = 'home'
-              icon = <Octicons name={'home'} size={40} color={color} />;
-            } else if (route.name === 'SendStack') {
-              // iconName = 'paper-airplane'
-              icon = <FontAwesome name={'paper-plane'} size={38} color={color} />;
-            } else if (route.name === 'LogStack') {
-              // iconName = 'clock'
-              icon = <FontAwesome5 name={'clock'} size={40} color={color} />;
-            }
-            // return <Octicons name={iconName} size={40} color={color} />;
-            return icon;
-          },
-          tabBarActiveTintColor: colors.darkgreen,
-          tabBarInactiveTintColor: 'gray',
+          //   if (route.name === 'HomeStack') {
+          //     // iconName = 'home'
+          //     icon = <Octicons name={'home'} size={40} color={color} />;
+          //   } else if (route.name === 'SendStack') {
+          //     // iconName = 'paper-airplane'
+          //     icon = <FontAwesome name={'paper-plane'} size={38} color={color} />;
+          //   } else if (route.name === 'LogStack') {
+          //     // iconName = 'clock'
+          //     icon = <FontAwesome5 name={'clock'} size={40} color={color} />;
+          //   }
+          //   // return <Octicons name={iconName} size={40} color={color} />;
+          //   return icon;
+          // },
+          // tabBarActiveTintColor: colors.darkgreen,
+          // tabBarInactiveTintColor: 'gray',
           headerShown: false,
-          tabBarStyle: {
-            height: 100
-          },
+          // tabBarStyle: {
+          //   height: 100
+          // },
           tabBarShowLabel: false
-        })}*/
+        })}
         tabBar={props => <View style={{backgroundColor: '#fff'}}><Tabbar {...props}/></View>}
         >
 

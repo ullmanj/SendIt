@@ -12,7 +12,7 @@ export default function HomeScreenNotOnSend() {
         <SafeAreaView style={styles.container}>
             <Text style={[fonts.title, styles.extraTitleStyling]}>Pending Invites</Text>
             <PendingInviteCarousel pendingInvites={true} data={PendingInvites}/>
-            <Text style={[fonts.title, styles.extraTitleStyling]}>Your Status</Text>
+            <Text style={[fonts.title, styles.extraSecondTitleStyling]}>Your Status</Text>
             <ToggleContainer isFree={isFree} setIsFree={setIsFree}/>     
         </SafeAreaView>
     );
@@ -43,7 +43,11 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
     extraTitleStyling: {
-        marginBottom: Dimensions.get('window').height * 0.025
+        marginBottom: Dimensions.get('window').height * 0.025,
+    },
+    extraSecondTitleStyling: {
+        marginBottom: Dimensions.get('window').height * 0.025,
+        marginTop: Dimensions.get('window').height * 0.025,
     },
     toggleContainer: {
         alignItems: 'center',

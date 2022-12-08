@@ -1,8 +1,10 @@
+// SOURCE: https://github.com/wcandillon/can-it-be-done-in-react-native/blob/master/bonuses/tabbar/components/StaticTabbar.tsx
+
 import * as React from "react";
 import {
   View, StyleSheet, TouchableWithoutFeedback, Animated, Dimensions,
 } from "react-native";
-import { Octicons } from "@expo/vector-icons";
+import { Octicons, FontAwesome, Ionicons, AntDesign } from "@expo/vector-icons";
 import { Text } from "react-native-svg";
 import { colors } from "../themes/colors";
 
@@ -78,7 +80,9 @@ export default class StaticTabbar extends React.PureComponent<StaticTabbarProps>
               <React.Fragment {...{ key }}>
                 <TouchableWithoutFeedback onPress={() => onPress(key)}>
                   <Animated.View style={[styles.tab, { opacity }]}>
-                    <Octicons name={tab.name} size={40} color={'black'} />
+                    {tab.name === 'paper-airplane' && <FontAwesome name={'paper-plane-o'} size={38} color={'black'} />}
+                    {tab.name === 'home' && <Ionicons name="home-outline" size={42} color={'black'} />}
+                    {tab.name === 'clock' && <AntDesign name="clockcircleo" size={40} color={'black'} />}
                   </Animated.View>
                 </TouchableWithoutFeedback>
                 <Animated.View
@@ -95,7 +99,9 @@ export default class StaticTabbar extends React.PureComponent<StaticTabbarProps>
                   }}
                 >
                   <View style={styles.activeIcon}>
-                    <Octicons name={tab.name} size={40} color={colors.darkgreen} />
+                    {tab.name === 'paper-airplane' && <FontAwesome name={'paper-plane'} size={38} color={colors.darkgreen} />}
+                    {tab.name === 'home' && <Ionicons name="home" size={42} color={colors.darkgreen} />}
+                    {tab.name === 'clock' && <AntDesign name="clockcircle" size={40} color={colors.darkgreen} />}
                   </View>
                 </Animated.View>
               </React.Fragment>

@@ -1,3 +1,5 @@
+// SOURCE: https://github.com/wcandillon/can-it-be-done-in-react-native/blob/master/bonuses/tabbar/components/Tabbar.tsx
+
 import * as React from "react";
 import {
   SafeAreaView, StyleSheet, Dimensions, View, Animated,
