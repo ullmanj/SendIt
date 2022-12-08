@@ -9,7 +9,7 @@ import { StyleSheet, Text, View } from 'react-native';
 // Font and Icon Imports
 import { Octicons } from '@expo/vector-icons';
 // Local Imports
-import { TabBarGroup, TimerScreen, MapScreen, ChatScreen, UpdateInterestsScreen } from './components';
+import { TabBarGroup, TimerScreen, MapScreen, ChatScreen, UpdateInterestsScreen, IntroScreen } from './components';
 import { useState } from 'react';
 
 const Stack = createStackNavigator();
@@ -23,9 +23,12 @@ export default function App() {
             screenOptions={{
                 headerShown: false
             }}>
-            <Stack.Screen name="UpdateInterestsScreen" component={UpdateInterestsScreen} />
+
+            <Stack.Screen name="IntroScreen" component={IntroScreen}/>
+
+            <Stack.Screen name="UpdateInterestsScreen" options={{gestureEnabled: false}} component={UpdateInterestsScreen} />
             
-            <Stack.Screen name="TabBarGroup">
+            <Stack.Screen name="TabBarGroup" /*options={{gestureEnabled: false}}*/ >
               {(props) => <TabBarGroup  {...props} currentSend={currentSend} setCurrentSend={setCurrentSend}/>}
             </Stack.Screen>
             {/* Below is the Process Funnel (no nav bar) */}

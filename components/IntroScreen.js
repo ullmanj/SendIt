@@ -1,9 +1,25 @@
-import { Image, Dimensions } from "react-native";
-import { TouchableOpacity } from 'react-native-gesture-handler';  // this import fixes bugs
+import { useNavigation } from "@react-navigation/native";
+import { useEffect } from "react";
+import { View, Image, Dimensions } from "react-native";
+import { TouchableOpacity } from 'react-native';
 
-// this isn't working yet. idk how to get it to show/where to add it
-export default function IntroScreen({navigation}) {
+export default function IntroScreen() {
+    const navigation = useNavigation();
+
+    // WORKING CODE for loading on a timer
+    /*useEffect(() => {
+    const intervalId = setInterval(() => {
+        navigation.navigate('UpdateInterestsScreen');
+    }, 5000)
+    
+    return () => clearInterval(intervalId)
+    }, [])*/
+     
     return(
-        <Image style={{width: Dimensions.get('screen').width * 0.13, height: Dimensions.get('screen').width * 0.13,}}source={require('../utils/miscPics/introScreen.png')} />
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate('UpdateInterestsScreen')}>
+                <Image style={{width: Dimensions.get('screen').width, height: Dimensions.get('screen').height}}source={require('../utils/miscPics/introScreen.png')}/>
+            </TouchableOpacity>
+        </View>
     );
 }
