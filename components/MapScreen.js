@@ -134,7 +134,7 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                                 if (voteIndex != -1) {
                                     activity = MapActivities[voteIndex]
                                 }
-                                setCurrentSend(activity); // TODO see if u need this line
+                                setCurrentSend(activity); // TODO see if u need this line - From Jamie: we do. I also added it below if they go to chat after voting
                                 navigation.navigate('ChatScreen', { 
                                     'activity' : activity,
                                     'backScreen' : backScreen,
@@ -145,6 +145,12 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                             { cancelable: false }
                           )
                     } else {
+                        let activity = MapActivities[0] 
+                        if (voteIndex != -1) {
+                            activity = MapActivities[voteIndex]
+                        }
+                        setCurrentSend(activity);
+
                         navigation.navigate('ChatScreen', { 
                             'activity' : MapActivities[voteIndex],
                             'backScreen' : backScreen,
