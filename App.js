@@ -28,17 +28,17 @@ export default function App() {
 
             <Stack.Screen name="UpdateInterestsScreen" options={{gestureEnabled: false}} component={UpdateInterestsScreen} />
             
-            <Stack.Screen name="TabBarGroup" /*options={{gestureEnabled: false}}*/ >
+            <Stack.Screen name="TabBarGroup" options={{gestureEnabled: false}} >
               {(props) => <TabBarGroup  {...props} currentSend={currentSend} setCurrentSend={setCurrentSend}/>}
             </Stack.Screen>
             {/* Below is the Process Funnel (no nav bar) */}
             <Stack.Screen name="TimerScreen" component={TimerScreen} options={{ presentation: 'modal' }}/>
             
-            <Stack.Screen name="MapScreen">
+            <Stack.Screen name="MapScreen" options={{gestureEnabled: false}} >
               {(props) => <MapScreen  {...props} currentSend={currentSend} setCurrentSend={setCurrentSend}/>}
             </Stack.Screen>
             
-            <Stack.Screen name="ChatScreen" component={ChatScreen} />
+            <Stack.Screen name="ChatScreen" options={{gestureEnabled: false}} component={ChatScreen} />
         </Stack.Navigator>
     </NavigationContainer>
   );

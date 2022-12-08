@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import MapActivities from '../utils/MapActivities'
 import Friends from '../utils/Friends'
 import MapIcon from './MapIcon'
-// NOTE: just using a timer library for now because it's easier! if we have time at the end, we can go back and code our own
 // Countdown credit to: https://www.npmjs.com/package/react-native-countdown-component
 import CountDown from './CountDown.js'
 // Map credit to: https://github.com/react-native-maps/react-native-maps 
@@ -22,8 +21,8 @@ import ChatButtonNoAction from "./ChatButtonNoAction"
 
 export default function MapScreen({ route, navigation, currentSend, setCurrentSend }) {
     const selectedFriendBools = route.params.selectedFriendBools;
-    const backScreen = route.params.backScreen
-    const backStack = route.params.backStack
+    const backScreen = 'HomeScreen' //route.params.backScreen  // Set it manually just to make sure
+    const backStack = 'HomeStack' //route.params.backStack  // Set it manually just to make sure
     const [mapLoaded, setMapLoaded] = useState(false);
     const [selectedMarkerActivityIndex, setSelectedMarkerActivityIndex] = useState();
     const [voteIndex, setVoteIndex] = useState(-1);

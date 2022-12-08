@@ -6,7 +6,7 @@ import GreenButton from "./GreenButton"
 import React, { useState } from 'react';
 import { colors } from "../themes/colors";
 
-export default function GroupSendScreen({navigation}) {
+export default function GroupSendScreen({navigation, currentSend, setCurrentSend}) {
     const [selectedFriendBools, setSelectedFriendBools] = useState(Array(Friends.length).fill(false));
 
     renderItem = ({ item, index }) => {
@@ -36,7 +36,7 @@ export default function GroupSendScreen({navigation}) {
                 keyExtractor={(_, index) => index}
             />
             <View style={styles.bottomButtons}>
-                <TouchableOpacity style={{justifyContent: 'center', alignItems: 'center'}} onPress={() => navigation.navigate('UpdateInterestsScreen', {'nextScreen': "SendStack"})}>
+                <TouchableOpacity style={{justifyContent: 'center', alignItems: 'center'}} onPress={() => navigation.navigate('UpdateInterestsScreen', {backStack: 'SendStack', backScreen: 'GroupSendScreen'})}>
                     <Text style={styles.updateInterestText}>
                         Update
                     </Text>
@@ -44,8 +44,8 @@ export default function GroupSendScreen({navigation}) {
                         Interests
                     </Text>
                 </TouchableOpacity>
-                <GreenButton navigation={navigation} title="Next" nextScreen="TimerScreen"
-                    deactivated={selectedFriendBools.indexOf(true) === -1} paramsToPassOn={{'selectedFriendBools': selectedFriendBools}}
+                <GreenButton navigation={navigation} title="Next" /*nextScreen="TimerScreen"*/
+                    deactivated={selectedFriendBools.indexOf(true) === -1} /*paramsToPassOn={{'selectedFriendBools': selectedFriendBools}}*/
                     deactivatedPressHandler={() => {
                         Alert.alert(
                             'Select at least one friend to create a Send',
@@ -55,6 +55,24 @@ export default function GroupSendScreen({navigation}) {
                             ],
                             { cancelable: false }
                           )
+                    }}
+                    explicitNavigationFunction={() => {
+                        if(currentSend !== null) {
+                            Alert.alert(
+                                'You are on an Active Send!',
+                                'Complete your current send to continue planning a new one',
+                                [
+                                {text: 'Cancel', onPress: () => {}, style: 'cancel'},
+                                {text: 'Complete', onPress: () => {
+                                    setCurrentSend(null);
+                                    navigation.navigate('TimerScreen', {'selectedFriendBools': selectedFriendBools});
+                                }},
+                                ],
+                                { cancelable: false }
+                            )
+                        } else {
+                            navigation.navigate('TimerScreen', {'selectedFriendBools': selectedFriendBools});
+                        }
                     }}
                 />
             </View>

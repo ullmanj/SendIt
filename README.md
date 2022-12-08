@@ -1,5 +1,5 @@
 HOME SCREEN
-- add "loading" screen that leads to update interests
+- [DONE] add "loading" screen that leads to update interests
 - [if time] add some sort of plane animation to the home screen
 
 MAP SCREEN
@@ -15,7 +15,7 @@ Circle icon
 - try making the overlay an opaque green or pink
 
 UPDATE INTERESTS
-- Clicking done on update interests should bring you back to where you just were
+- [DONE] Clicking done on update interests should bring you back to where you just were
 - [DONE] consider having some interests pre-selected
 
 ERRORS

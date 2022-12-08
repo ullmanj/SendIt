@@ -10,10 +10,16 @@ import BackButtonNoAction from "./BackButtonNoAction"
 import { constants } from "../themes/constants";
 
 export default function ChatHeader(props) {
-    const { navigation, activity, backScreen, backStack } = props
+    const { navigation, activity, backScreen, backStack, goBackInStack } = props
     return(
         <SafeAreaView style={styles.container}>
-            <Pressable style={constants.backButtonStyle} onPress={() => navigation.navigate(backStack, { 'screen': backScreen })}>
+            <Pressable style={constants.backButtonStyle} onPress={() => {
+                if(goBackInStack) {
+                    navigation.goBack()
+                } else {
+                    navigation.navigate(backStack, { 'screen': backScreen });
+                }
+            }}>
                 <BackButtonNoAction position="relative"/>
             </Pressable>
             <View style={styles.centerText}>

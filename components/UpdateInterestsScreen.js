@@ -6,8 +6,9 @@ import WideGreenButton from "./WideGreenButton";
 import { fonts } from "../themes/fonts"
   
 export default function UpdateInterestsScreen({navigation, route}) {
-    // const [DestinationName, setDestinationName] = useState(route?.params?.nextScreen ? route.params.nextScreen : "HomeStack")
-    let DestinationName = route?.params?.nextScreen ? route.params.nextScreen : "HomeStack";
+    const backTab = 'TabBarGroup';
+    const backScreen  = route.params?.backScreen != null ? route.params.backScreen : 'HomeScreen';
+    const backStack  = route.params?.backStack != null ? route.params.backStack : 'HomeStack';
 
     renderSection = ({ item }) => {
       return (
@@ -60,7 +61,12 @@ export default function UpdateInterestsScreen({navigation, route}) {
             /> 
             <View style={styles.doneButton}>
               <WideGreenButton navigation={navigation} title="Done"
-                explicitNavigationFunction={() => navigation.navigate('TabBarGroup', { 'screen': {DestinationName} })}/>
+                explicitNavigationFunction={() => navigation.navigate(backTab, {
+                  screen: backStack,
+                  params: {
+                    screen: backScreen
+                  }
+                })}/>
             </View>
         </SafeAreaView>
 

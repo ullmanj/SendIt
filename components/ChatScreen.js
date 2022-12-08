@@ -10,8 +10,10 @@ import { Octicons } from '@expo/vector-icons';
 
 export default function ChatScreen({ navigation, route }) {
     const activity = route.params.activity
-    const backScreen  = route.params?.backScreen != null ? route.params.backScreen : 'HomeScreen' 
-    const backStack  = route.params?.backStack != null ? route.params.backStack : 'HomeStack' 
+    const backScreen  = route.params?.backScreen != null ? route.params.backScreen : 'HomeScreen';
+    const backStack  = route.params?.backStack != null ? route.params.backStack : 'HomeStack';
+    const goBackInStack = route.params?.goBackInStack !== null ? route.params.goBackInStack : false;
+
     // const participants = route.params.participants
     const [messages, setMessages] = useState([
           {
@@ -109,7 +111,7 @@ export default function ChatScreen({ navigation, route }) {
 
     function renderActions() {
       return (
-        <Pressable onPress={() => {  // Back button renders regardless of map rendering status
+        <Pressable onPress={() => {
           Alert.alert(
               'Send an Image',
               "Images you send in the chat will appear in the Send Log once the send is completed! You can also attach photos after the send is completed.",
@@ -139,7 +141,7 @@ export default function ChatScreen({ navigation, route }) {
               _id: 20,
             }}
           />
-          <ChatHeader navigation={navigation} activity={route.params.activity} backScreen={backScreen} backStack={backStack}/>
+          <ChatHeader navigation={navigation} activity={route.params.activity} backScreen={backScreen} backStack={backStack} goBackInStack={goBackInStack}/>
         </View>
     );
 }

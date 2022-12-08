@@ -5,7 +5,7 @@ import TimerScreen from './TimerScreen';  // not included because it exists elsw
 import MapScreen from './MapScreen';  // not included because it exists elswhere - navigate to it leaving this stack.
 import ChatScreen from './ChatScreen';  // not included because it exists elswhere - navigate to it leaving this stack.
 
-export default function SendStack() {
+export default function SendStack({currentSend, setCurrentSend}) {
     const Stack = createStackNavigator();
 
     return (
@@ -13,7 +13,9 @@ export default function SendStack() {
             screenOptions={{
                 headerShown: false
             }}>
-            <Stack.Screen name="GroupSendScreen" component={GroupSendScreen} />
+            <Stack.Screen name="GroupSendScreen">
+                {(props) => <GroupSendScreen  {...props} currentSend={currentSend} setCurrentSend={setCurrentSend}/>}
+            </Stack.Screen>
         </Stack.Navigator>
     );
 }
