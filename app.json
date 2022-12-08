@@ -1,7 +1,8 @@
 {
   "expo": {
     "name": "SendIt",
-    "slug": "SendIt",
+    "owner": "senditprojectgroup",
+    "slug": "senditgroupdemo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -12,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/6c4f83fd-b00b-44c8-a6c0-60a2d845dc41"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -28,6 +30,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6c4f83fd-b00b-44c8-a6c0-60a2d845dc41"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }
