@@ -1,5 +1,5 @@
 // Navigation Imports
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator, BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 // React Imports
 import { StyleSheet, Text, View } from 'react-native';
 // Font and Icon Imports
@@ -12,10 +12,14 @@ import SendStack from './SendStack';
 import LogStack from './LogStack';
 import { colors } from '../themes/colors'
 import Tabbar from "./Tabbar"
+import { useNavigation } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabBarGroup({currentSend, setCurrentSend}) {
+  // const navigation = useNavigation();
+  
+
   return (
       // I know we're gonna update this tab later, but I adjusted the size to take up more of the screen to reflect the size of the tab in the figma
       <Tab.Navigator screenOptions={({ route }) => ({  // Adapted from cs47-lecture5b-demo

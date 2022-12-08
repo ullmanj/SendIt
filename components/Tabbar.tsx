@@ -1,4 +1,4 @@
-// SOURCE: https://github.com/wcandillon/can-it-be-done-in-react-native/blob/master/bonuses/tabbar/components/Tabbar.tsx
+// SOURCE (before edits): https://github.com/wcandillon/can-it-be-done-in-react-native/blob/master/bonuses/tabbar/components/Tabbar.tsx
 
 import * as React from "react";
 import {
@@ -54,14 +54,23 @@ const getPath = (): string => {
   return `${left} ${tab} ${right}`;
 };
 const d = getPath();
-interface TabbarProps {}
+interface TabbarProps {
+  navigation: any
+}
 
 // eslint-disable-next-line react/prefer-stateless-function
 export default class Tabbar extends React.PureComponent<TabbarProps> {
   value = new Animated.Value(0);
+  navigation: any
+
+  constructor(props: TabbarProps) {
+    super(props);
+    const { navigation } = this.props;
+    this.navigation = navigation;
+  }
 
   render() {
-    const { value } = this;
+    const { value, navigation } = this;
     const translateX = value.interpolate({
       inputRange: [0, width],
       outputRange: [-width, 0],
@@ -73,7 +82,7 @@ export default class Tabbar extends React.PureComponent<TabbarProps> {
             <Path fill={backgroundColor} {...{ d }} />
           </AnimatedSvg>
           <View style={StyleSheet.absoluteFill}>
-            <StaticTabbar {...{ tabs, value }} />
+            <StaticTabbar {...{ tabs, value, navigation }} />
           </View>
         </View>
         <SafeAreaView style={styles.container} />

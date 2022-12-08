@@ -1,4 +1,4 @@
-// SOURCE: https://github.com/wcandillon/can-it-be-done-in-react-native/blob/master/bonuses/tabbar/components/StaticTabbar.tsx
+// SOURCE (before edits): https://github.com/wcandillon/can-it-be-done-in-react-native/blob/master/bonuses/tabbar/components/StaticTabbar.tsx
 
 import * as React from "react";
 import {
@@ -17,19 +17,24 @@ interface Tab {
 interface StaticTabbarProps {
   tabs: Tab[];
   value: Animated.Value;
+  navigation: any;
 }
 
 export default class StaticTabbar extends React.PureComponent<StaticTabbarProps> {
   values: Animated.Value[] = [];
+  navigation: any;
+
+  tabNames = ['HomeStack', 'SendStack', 'LogStack'];
 
   constructor(props: StaticTabbarProps) {
     super(props);
-    const { tabs } = this.props;
+    const { tabs, navigation } = this.props;
     this.values = tabs.map((tab, index) => new Animated.Value(index === 0 ? 1 : 0));
+    this.navigation = navigation;
   }
 
   onPress = (index: number) => {
-    const { value, tabs } = this.props;
+    const { value, tabs, navigation } = this.props;
     const tabWidth = width / tabs.length;
     Animated.sequence([
       Animated.parallel(
@@ -50,6 +55,7 @@ export default class StaticTabbar extends React.PureComponent<StaticTabbarProps>
         }),
       ]),
     ]).start();
+    navigation.jumpTo(this.tabNames[index]);
   }
 
   render() {
