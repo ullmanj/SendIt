@@ -35,14 +35,14 @@ const getPath = (): string => {
     { x: width, y: 0 },
   ]);
   const tab = shape.line().x(d => d.x).y(d => d.y).curve(shape.curveBasis)([
-    { x: width, y: 0 },
-    { x: width + 5, y: 0 },
-    { x: width + 10, y: 10 },
-    { x: width + 15, y: height },
-    { x: width + tabWidth - 15, y: height },
-    { x: width + tabWidth - 10, y: 10 },
-    { x: width + tabWidth - 5, y: 0 },
-    { x: width + tabWidth, y: 0 },
+    { x: width, y: 0 }, // x was 0
+    { x: width + 5, y: 0 },  // x was 5
+    { x: width + 15, y: 10 },  // x was 10
+    { x: width + 25, y: height },  // was 15
+    { x: width + tabWidth - 25, y: height },  // x was 15
+    { x: width + tabWidth - 15, y: 10 },  // x was 10
+    { x: width + tabWidth - 5, y: 0 },  // x was 5
+    { x: width + tabWidth, y: 0 }, // x was 0
   ]);
   const right = shape.line().x(d => d.x).y(d => d.y)([
     { x: width + tabWidth, y: 0 },
