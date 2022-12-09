@@ -12,6 +12,9 @@ import { Octicons } from '@expo/vector-icons';
 import { TabBarGroup, TimerScreen, MapScreen, ChatScreen, UpdateInterestsScreen, IntroScreen } from './components';
 import { useState } from 'react';
 
+import { LogBox } from 'react-native';
+LogBox.ignoreAllLogs(); //Ignore all log notifications
+
 const Stack = createStackNavigator();
 
 export default function App() {
