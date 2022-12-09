@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, ScrollView, View, Text, Image, Dimensions, FlatList } from "react-native";
+import { StyleSheet, Alert, Pressable, SafeAreaView, ScrollView, View, Text, Image, Dimensions, FlatList } from "react-native";
 import { fonts } from "../themes/fonts"
 import { constants } from "../themes/constants"
 import BackButton from "./BackButton"
@@ -9,6 +9,7 @@ import { Octicons, Fontisto, AntDesign, FontAwesome5, FontAwesome, Entypo } from
 import { colors } from "../themes/colors";
 import React, { useState } from 'react';
 import ImageCarousel2 from "./ImageCarousel2"
+import * as ImagePicker from 'expo-image-picker'; 
 
 export default function SendInfoScreen({ navigation, route }) {
     const activity = route.params.activity
@@ -66,7 +67,31 @@ export default function SendInfoScreen({ navigation, route }) {
             </View>
             <View style={{flexDirection: 'row', alignSelf: 'center', paddingBottom: 5}}>
                 <GreenButton title="View Chat" navigation={navigation} nextScreen="ChatScreen" paramsToPassOn={{'activity': activity, 'backScreen': 'SendLogScreen', 'backStack': 'LogStack', 'goBackInStack': true}}/>
-                <Octicons name="device-camera" color={colors.darkgreen} size={60} style={{marginLeft: 40}}/>
+                <Pressable onPress={async () => {
+                    Alert.alert(
+                        'Add Photos To This Memory',
+                        "Images you select will be added to the photos section above!",
+                        [
+                          {text: 'Cancel', onPress: () => {}, style: 'cancel'},
+                          {text: 'Select from camera roll', onPress: async () => {
+                            let result = await ImagePicker.launchImageLibraryAsync({
+                                mediaTypes: ImagePicker.MediaTypeOptions.All,
+                                allowsEditing: true,
+                                aspect: [4, 3],
+                                quality: 1,
+                            });
+                            
+                            console.log(result)
+                            if (result.canceled) {
+                              return
+                            }    
+                          }},
+                        ],
+                        { cancelable: false }
+                      )      
+                }}>
+                    <Octicons name="device-camera" color={colors.darkgreen} size={60} style={{marginLeft: 40}}/>
+                </Pressable>
             </View>
             </ScrollView>
         </SafeAreaView>
