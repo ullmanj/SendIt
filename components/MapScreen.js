@@ -18,6 +18,7 @@ import ExitSendButtonNoAction from "./ExitSendButtonNoAction";
 import DefaultMapPreview from "./DefaultMapPreview";
 import FriendLocation from "./FriendLocation";
 import ChatButtonNoAction from "./ChatButtonNoAction"
+import ForwardButtonNoAction from "./ForwardButtonNoAction"
 
 export default function MapScreen({ route, navigation, currentSend, setCurrentSend }) {
     const selectedFriendBools = route.params.selectedFriendBools;
@@ -133,7 +134,7 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                                 if (voteIndex != -1) {
                                     activity = MapActivities[voteIndex]
                                 }
-                                setCurrentSend(activity); // TODO see if u need this line - From Jamie: we do. I also added it below if they go to chat after voting
+                                setCurrentSend(activity);
                                 navigation.navigate('ChatScreen', { 
                                     'activity' : activity,
                                     'backScreen' : backScreen,
@@ -157,7 +158,8 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                         })
                     }
                 }}>
-                    <ChatButtonNoAction />
+                    {/* <ChatButtonNoAction /> */}
+                    <ForwardButtonNoAction />
             </Pressable>
             
             { mapLoaded === true &&  // pointerEvents box-none means that the touches are passed through the empty space to the map so you can still use the map with the overlay on top.
@@ -172,6 +174,7 @@ export default function MapScreen({ route, navigation, currentSend, setCurrentSe
                             if (voteIndex != -1) {
                                 activity = MapActivities[voteIndex]
                             }
+                            setCurrentSend(activity);
                             navigation.navigate('ChatScreen', { 
                                 'activity' : activity,
                                 'backScreen' : backScreen,
